@@ -29,30 +29,20 @@ class BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: AppBar(
-        actions: const [
-          Padding(
-              padding: EdgeInsets.only(right: 15),
-              child: Icon(Icons.notifications_none_sharp, size: 25)),
-          Padding(
-              padding: EdgeInsets.only(right: 15),
-              child: Icon(Icons.history_sharp, size: 25)),
-          Padding(
-              padding: EdgeInsets.only(right: 10),
-              child: Icon(Icons.settings_outlined, size: 25)),
-        ],
-        backgroundColor: Colors.purple,
-        title: const Text('Howdy, User!'),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.purple, Colors.pink],
-              begin: Alignment.bottomRight,
-              end: Alignment.topLeft,
-            ),
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   actions: const [],
+      //   backgroundColor: Colors.purple,
+      //   title: const Text('Howdy, User!'),
+      //   flexibleSpace: Container(
+      //     decoration: BoxDecoration(
+      //       gradient: LinearGradient(
+      //         colors: [Colors.purple, Colors.pink],
+      //         begin: Alignment.bottomRight,
+      //         end: Alignment.topLeft,
+      //       ),
+      //     ),
+      //   ),
+      // ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -80,3 +70,14 @@ class BottomNavBarState extends State<BottomNavBar> {
     );
   }
 }
+
+
+//  Padding(
+//               padding: EdgeInsets.only(right: 15),
+//               child: Icon(Icons.notifications_none_sharp, size: 25)),
+//           Padding(
+//               padding: EdgeInsets.only(right: 15),
+//               child: Icon(Icons.history_sharp, size: 25)),
+//           Padding(
+//               padding: EdgeInsets.only(right: 10),
+//               child: Icon(Icons.settings_outlined, size: 25)),
