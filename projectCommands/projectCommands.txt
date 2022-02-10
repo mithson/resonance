@@ -1,0 +1,67 @@
+Github and git commands::
+===================================================
+git init                              
+   git add .                                 
+   git status
+   git commit -m "message here for commit"
+or 
+   git commit -am "message here for commit" //this replaces above three lines
+
+git remote add origin 'https wala url'
+git push -u origin master 
+----------------------------------
+Working with branches: (follow codemyschool on youtube for this)
+------------------------------------
+git branch newBranch
+git branch // comment: this list all the branches available in that repo
+git checkout main // comment: changes to "main" branch
+git commit -am "added somthing new" // comment: here -am flag is add + commit message we used -am to avoid use of git add filename
+
+To create a new branch and switch to it at the same time, you can run the git checkout command with the -b switch:
+git checkout -b newBranch 
+(is same as)  
+git branch newBranch and git checkout newBranch
+
+editing and renaming brnaches: 
+
+# Rename the local branch to the new name
+git branch -m <old_name> <new_name>
+
+# Delete the old branch on remote - where <remote> is, for example, origin
+git push <remote> --delete <old_name>
+
+# Or shorter way to delete remote branch [:]
+git push <remote> :<old_name>
+
+# Prevent git from using the old name when pushing in the next step.
+# Otherwise, git will use the old upstream name instead of <new_name>.
+git branch --unset-upstream <old_name>
+
+# Push the new branch to remote
+git push <remote> <new_name>
+
+# Reset the upstream branch for the new_name local branch
+git push <remote> -u <new_name>
+
+# In this option, we will push the branch to the remote with the new name
+# While keeping the local name as is
+git push <remote> <remote>/<old_name>:refs/heads/<new_name> :<old_name>
+
+When you use the git branch -m (move), Git is also updating your tracking branch with the new name.
+
+
+pulling code from remote repo to local branch=====>
+git fetch
+git reset --hard origin/yourBranch
+
+
+================================================
+firebase commands:
+===================================================	
+firebase deploy --only hosting
+firebase hosting:channel:list
+firebase hosting:channel:deploy --expires 30d previewChannelName
+firebase hosting:clone devcom:testProject devcom:live
+
+
+          db.collection('question').doc('${_currentUser.displayName}');
