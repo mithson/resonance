@@ -55,41 +55,83 @@ class _HomeState extends State<Home> {
                 ],
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               Expanded(
                 child: Column(children: [
                   Row(
                     children: [
-                      Container(
-                        color: Colors.white,
-                        height: 60,
-                        width: MediaQuery.of(context).size.width / 2.50,
-                        margin: EdgeInsets.only(
-                          left: 20,
+                      Expanded(
+                        child: Container(
+                          height: 60,
+                          width: MediaQuery.of(context).size.width / 2.5,
+                          margin: EdgeInsets.only(
+                            left: 15,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(5), // radius of 10
+                            color: const Color(0xFFFFFF).withOpacity(0.3),
+                          ),
+                          child: Row(children: [
+                            ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(5),
+                                    topLeft: Radius.circular(5)),
+                                child: Image.asset('assets/images/top50.jpg')),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text('Top 50',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600)),
+                            ),
+                          ]),
                         ),
-                        child: Row(children: [
-                          Text('Liked Songs',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600)),
-                        ]),
                       ),
-                      Container(
-                        color: Colors.white,
-                        height: 60,
-                        width: MediaQuery.of(context).size.width / 2.50,
-                        margin: EdgeInsets.only(
-                          left: 20,
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 60,
+                          width: MediaQuery.of(context).size.width / 2.5,
+                          margin: EdgeInsets.only(
+                            right: 15,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(5), // radius of 10
+                            color: const Color(0xFFFFFF).withOpacity(0.3),
+                          ),
+                          child: Row(children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(5),
+                                  topLeft: Radius.circular(5)),
+                              child: Container(
+                                alignment: Alignment.center,
+                                color: Colors.purple[500],
+                                height: 60,
+                                width: 60,
+                                child: Icon(
+                                  Icons.favorite,
+                                  color: Colors.white70,
+                                  size: 35,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Text('Liked Songs',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600)),
+                            ),
+                          ]),
                         ),
-                        child: Row(children: [
-                          Text('Liked Songs',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600)),
-                        ]),
                       ),
                       // SizedBox(
                       //   width: 10,
