@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: Text('Top 50',
                                   style: TextStyle(
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600)),
                             ),
@@ -126,16 +126,13 @@ class _HomeState extends State<Home> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: Text('Liked Songs',
                                   style: TextStyle(
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600)),
                             ),
                           ]),
                         ),
                       ),
-                      // SizedBox(
-                      //   width: 10,
-                      // ),
                     ],
                   ),
                 ]),
