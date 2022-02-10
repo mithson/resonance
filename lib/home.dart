@@ -53,7 +53,51 @@ class _HomeState extends State<Home> {
                       child: Icon(Icons.settings_outlined,
                           color: Colors.white, size: 25)),
                 ],
-              )
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: Column(children: [
+                  Row(
+                    children: [
+                      Container(
+                        color: Colors.white,
+                        height: 60,
+                        width: MediaQuery.of(context).size.width / 2.50,
+                        margin: EdgeInsets.only(
+                          left: 20,
+                        ),
+                        child: Row(children: [
+                          Text('Liked Songs',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600)),
+                        ]),
+                      ),
+                      Container(
+                        color: Colors.white,
+                        height: 60,
+                        width: MediaQuery.of(context).size.width / 2.50,
+                        margin: EdgeInsets.only(
+                          left: 20,
+                        ),
+                        child: Row(children: [
+                          Text('Liked Songs',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600)),
+                        ]),
+                      ),
+                      // SizedBox(
+                      //   width: 10,
+                      // ),
+                    ],
+                  ),
+                ]),
+              ),
             ],
           ),
         ),
