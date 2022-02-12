@@ -8,10 +8,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      color: Colors.black,
+    return MaterialApp(
+      theme: ThemeData(
+        colorScheme:
+            ColorScheme.fromSwatch().copyWith(secondary: Colors.black87),
+      ),
       debugShowCheckedModeBanner: false,
       home: BottomNavBar(),
     );
   }
 }
+
+
+

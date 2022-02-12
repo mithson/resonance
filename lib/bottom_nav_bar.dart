@@ -78,20 +78,20 @@ class BottomNavBarState extends State<BottomNavBar> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
-        backgroundColor: const Color(0x000000).withOpacity(0.8),
+        backgroundColor: const Color(0x000000).withOpacity(0.6),
         onTap: _onItemTapped,
       ),
     );
   }
 }
 
-
-//  Padding(
-//               padding: EdgeInsets.only(right: 15),
-//               child: Icon(Icons.notifications_none_sharp, size: 25)),
-//           Padding(
-//               padding: EdgeInsets.only(right: 15),
-//               child: Icon(Icons.history_sharp, size: 25)),
-//           Padding(
-//               padding: EdgeInsets.only(right: 10),
-//               child: Icon(Icons.settings_outlined, size: 25)),
+ // Container(
+                        //   width: MediaQuery.of(context).size.width / 2,
+                        //   child: Text(
+                        //     'Arjit Singh meArjit Singh anylong name',
+                        //     // overflow: TextOverflow.ellipsis,
+                        //     maxLines: 2,
+                        //     textAlign: TextAlign.center,
+                        //     style: TextStyle(color: Colors.white),
+                        //   ),
+                        // ),
