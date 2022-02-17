@@ -9,114 +9,82 @@ class Library extends StatefulWidget {
 }
 
 class _LibraryState extends State<Library> {
+  var list = ['Playlists', "Artists", "Albums", "Podcasts"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(45),
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: 10,
+              ),
+              for (var item in list)
+                Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: FilterChip(
+                    label: Text(
+                      item,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.black,
+                    shape: StadiumBorder(side: BorderSide(color: Colors.white)),
+                    onSelected: (bool value) {
+                      print("selected");
+                    },
+                  ),
+                ),
+              SizedBox(
+                width: 20,
+              )
+            ],
+          ),
+        ),
+        actions: [
+          Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            IconButton(
+                onPressed: null,
+                icon: Icon(FontAwesomeIcons.search,
+                    size: 20, color: Colors.white)),
+            IconButton(
+              onPressed: null,
+              icon: Icon(
+                Icons.add,
+                size: 32,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            )
+          ])
+        ],
+        leading: Padding(
+          padding: EdgeInsets.only(left: 15),
+          child: CircleAvatar(
+            radius: 70,
+            backgroundImage: AssetImage('assets/images/album3.jpg'),
+          ),
+        ),
+        title: Text('Your Library'),
+        backgroundColor: Colors.black,
+      ),
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            Container(
-              color: Colors.black45,
-              height: 100,
-              width: double.infinity,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  CircleAvatar(
-                    radius: 25,
-                    backgroundColor: Colors.blueAccent,
-                    child: Center(
-                      child: Text(
-                        "N",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Text(
-                    "Your Library",
-                    style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    width: 105,
-                  ),
-                  Icon(
-                    Icons.search,
-                    color: Colors.white70,
-                    size: 35,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Icon(
-                    Icons.add,
-                    color: Colors.white70,
-                    size: 35,
-                  )
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 25,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  height: 40,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(width: 1, color: Colors.white)),
-                  child: Text(
-                    "Playlist",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        letterSpacing: 2,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  height: 40,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(width: 1, color: Colors.white)),
-                  child: Text(
-                    "Artist",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        letterSpacing: 2,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ],
-            ),
             SizedBox(
-              height: 25,
+              height: 145,
             ),
             Row(
               children: [
                 SizedBox(
-                  width: 25,
+                  width: 15,
                 ),
                 Transform.rotate(
                   angle: 90 * pi / 180,
@@ -126,23 +94,23 @@ class _LibraryState extends State<Library> {
                   ),
                 ),
                 SizedBox(
-                  width: 15,
+                  width: 5,
                 ),
                 Text(
                   "Recently Played",
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 SizedBox(
-                  width: 170,
+                  width: 165,
                 ),
                 Icon(
-                  FontAwesomeIcons.listAlt,
+                  Icons.grid_view,
                   color: Colors.white,
                 )
               ],
             ),
             SizedBox(
-              height: 15,
+              height: 5,
             ),
             tile(
                 "Liked Songs", "assets/images/album1.jpg", "Playlist 52 Songs"),
@@ -179,12 +147,16 @@ class _LibraryState extends State<Library> {
       title: Text(
         title,
         style: TextStyle(
-            color: Colors.white, fontSize: 18, fontStyle: FontStyle.italic),
+          color: Colors.white,
+          fontSize: 18,
+        ),
       ),
       subtitle: Text(
         subtit,
         style: TextStyle(
-            color: Colors.white54, fontSize: 13, fontStyle: FontStyle.italic),
+          color: Colors.white54,
+          fontSize: 13,
+        ),
       ),
     );
   }

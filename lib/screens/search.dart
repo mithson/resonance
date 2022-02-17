@@ -54,7 +54,7 @@ class _SearchState extends State<Search> {
               width: double.infinity,
               margin: EdgeInsets.only(right: 25, left: 25),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(2), color: Colors.white),
+                  borderRadius: BorderRadius.circular(4), color: Colors.white),
               child: Row(
                 children: [
                   SizedBox(
@@ -92,22 +92,6 @@ class _SearchState extends State<Search> {
             SizedBox(
               height: 10,
             ),
-            Padding(
-                padding: EdgeInsets.only(left: 25),
-                child: cards(
-                    context, 'Pop', Colors.red, 'assets/images/album7.jpg')),
-            Container(
-                padding: EdgeInsets.all(12.0),
-                child: GridView.builder(
-                  itemCount: browseAll.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 4.0,
-                      mainAxisSpacing: 4.0),
-                  itemBuilder: (BuildContext context, int index) {
-                    return Image.network(browseAll.image);
-                  },
-                )),
             SizedBox(
               height: 20,
             ),
@@ -122,18 +106,13 @@ class _SearchState extends State<Search> {
             SizedBox(
               height: 10,
             ),
-            Padding(
-                padding: EdgeInsets.only(left: 25),
-                child: cards(
-                    context, 'Pop', Colors.red, 'assets/images/album7.jpg')),
           ],
         ),
       ),
     );
   }
 
-  ClipRRect cards(
-      BuildContext context, String text, Color color, String image) {
+  Widget cards(String text, Color color, String image) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(5),
       child: Container(

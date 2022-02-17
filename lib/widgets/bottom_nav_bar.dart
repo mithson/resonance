@@ -68,7 +68,7 @@ class BottomNavBarState extends State<BottomNavBar> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.black87.withOpacity(0.4),
+              Colors.black87.withOpacity(0.2),
               Colors.black87,
             ],
             begin: Alignment.topCenter,
@@ -100,4 +100,11 @@ class BottomNavBarState extends State<BottomNavBar> {
           onTap: _onItemTapped,
         ));
   }
+}
+
+class FilterChips {
+  bool isSelected;
+  String label;
+  FilterChips({required this.isSelected, required this.label});
+  
 }
