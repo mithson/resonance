@@ -27,32 +27,35 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.start,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 20, top: 40),
-                    child: Text(
-                      "Recently Played",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600),
+              Padding(
+                padding: EdgeInsets.only(top: 25),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text(
+                        "Recently Played",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
-                  ),
-                  Spacer(),
-                  Padding(
-                      padding: EdgeInsets.only(right: 23, top: 50),
-                      child: Icon(Icons.notifications_none_sharp,
-                          color: Colors.white, size: 28)),
-                  Padding(
-                      padding: EdgeInsets.only(right: 23, top: 50),
-                      child: Icon(Icons.history_sharp,
-                          color: Colors.white, size: 28)),
-                  Padding(
-                      padding: EdgeInsets.only(right: 15, top: 50),
-                      child: Icon(Icons.settings_outlined,
-                          color: Colors.white, size: 28)),
-                ],
+                    Spacer(),
+                    Padding(
+                        padding: EdgeInsets.only(right: 23),
+                        child: Icon(Icons.notifications_none_sharp,
+                            color: Colors.white, size: 28)),
+                    Padding(
+                        padding: EdgeInsets.only(right: 23),
+                        child: Icon(Icons.history_sharp,
+                            color: Colors.white, size: 28)),
+                    Padding(
+                        padding: EdgeInsets.only(right: 15),
+                        child: Icon(Icons.settings_outlined,
+                            color: Colors.white, size: 28)),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 20,
@@ -92,42 +95,45 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       width: 10,
                     ),
-                    Container(
-                      height: 60,
-                      width: MediaQuery.of(context).size.width / 2.5,
-                      margin: EdgeInsets.only(
-                        right: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5), // radius of 10
-                        color: const Color(0xFFFFFF).withOpacity(0.3),
-                      ),
-                      child: Row(children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(5),
-                              topLeft: Radius.circular(5)),
-                          child: Container(
-                            alignment: Alignment.center,
-                            color: Colors.purple[500],
-                            height: 60,
-                            width: 60,
-                            child: Icon(
-                              Icons.favorite,
-                              color: Colors.white70,
-                              size: 25,
+                    Expanded(
+                      child: Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        margin: EdgeInsets.only(
+                          right: 15,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(5), // radius of 10
+                          color: const Color(0xFFFFFF).withOpacity(0.3),
+                        ),
+                        child: Row(children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(5),
+                                topLeft: Radius.circular(5)),
+                            child: Container(
+                              alignment: Alignment.center,
+                              color: Colors.purple[500],
+                              height: 60,
+                              width: 60,
+                              child: Icon(
+                                Icons.favorite,
+                                color: Colors.white70,
+                                size: 25,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: Text('Liked Songs',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600)),
-                        ),
-                      ]),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text('Liked Songs',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600)),
+                          ),
+                        ]),
+                      ),
                     ),
                   ],
                 ),

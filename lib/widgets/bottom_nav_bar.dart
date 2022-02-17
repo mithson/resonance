@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:resonance/home.dart';
-import 'package:resonance/library.dart';
-import 'package:resonance/search.dart';
+import 'package:resonance/screens/home.dart';
+import 'package:resonance/screens/library.dart';
+import 'package:resonance/screens/search.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class BottomNavBarState extends State<BottomNavBar> {
       ),
       persistentFooterButtons: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 3),
+          margin: EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5), color: Colors.purple),
           child: Row(
@@ -46,7 +46,7 @@ class BottomNavBarState extends State<BottomNavBar> {
                 icon: Icon(Icons.play_arrow),
                 onPressed: () {},
               ),
-              Container(child: Text("Some data over hereSome data ")),
+              Text("Some data over hereSome data "),
               IconButton(
                 icon: Icon(Icons.favorite),
                 onPressed: () {},
@@ -59,39 +59,45 @@ class BottomNavBarState extends State<BottomNavBar> {
           ),
         )
       ],
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.my_library_music),
-            label: 'Library',
-          ),
-        ],
-        elevation: 0,
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        backgroundColor: const Color(0x000000).withOpacity(0.6),
-        onTap: _onItemTapped,
-      ),
+      bottomNavigationBar: customBottomNavBar(),
     );
   }
-}
 
- // Container(
-                        //   width: MediaQuery.of(context).size.width / 2,
-                        //   child: Text(
-                        //     'Arjit Singh meArjit Singh anylong name',
-                        //     // overflow: TextOverflow.ellipsis,
-                        //     maxLines: 2,
-                        //     textAlign: TextAlign.center,
-                        //     style: TextStyle(color: Colors.white),
-                        //   ),
-                        // ),
+  Widget customBottomNavBar() {
+    return Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.black87.withOpacity(0.4),
+              Colors.black87,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [0.0, 0.8],
+            // tileMode: TileMode.clamp,
+          ),
+        ),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.my_library_music),
+              label: 'Library',
+            ),
+          ],
+          elevation: 0,
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white60,
+          backgroundColor: const Color(0x000000).withOpacity(0.7),
+          onTap: _onItemTapped,
+        ));
+  }
+}

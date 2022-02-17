@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resonance/bottom_nav_bar.dart';
+import 'package:resonance/widgets/bottom_nav_bar.dart';
 
 void main() => runApp(const MyApp());
 
@@ -18,6 +18,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
