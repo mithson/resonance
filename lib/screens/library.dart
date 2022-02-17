@@ -9,7 +9,12 @@ class Library extends StatefulWidget {
 }
 
 class _LibraryState extends State<Library> {
-  var list = ['Playlists', "Artists", "Albums", "Podcasts"];
+  var list = [
+    'Playlists',
+    "Artists",
+    "Albums",
+    "Podcasts",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,32 +65,35 @@ class _LibraryState extends State<Library> {
                   // Format this to meet your need
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        SizedBox(
-                          width: 10,
-                        ),
-                        for (var item in list)
-                          Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: FilterChip(
-                              label: Text(
-                                item,
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              backgroundColor: Colors.black,
-                              shape: StadiumBorder(
-                                  side: BorderSide(color: Colors.white)),
-                              onSelected: (bool value) {
-                                print("selected");
-                              },
-                            ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 10,
                           ),
-                        SizedBox(
-                          width: 20,
-                        )
-                      ],
-                    ),
+                          for (var item in list)
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: FilterChip(
+                                label: Text(
+                                  item,
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                backgroundColor: Colors.black,
+                                shape: StadiumBorder(
+                                    side: BorderSide(color: Colors.white)),
+                                onSelected: (bool value) {
+                                  print(item);
+                                },
+                              ),
+                            ),
+                          SizedBox(
+                            width: 20,
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -150,6 +158,9 @@ class _LibraryState extends State<Library> {
               tile("Malayalam", "assets/images/album3.jpg", "Malayalam List"),
               tile("Weekly Discover", "assets/images/album4.jpg",
                   "Weekly discover"),
+              SizedBox(
+                height: 115,
+              )
             ],
           ),
         ),
@@ -191,10 +202,10 @@ class PersistentHeader extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       width: double.infinity,
-      height: 56.0,
+      height: 45,
       child: Card(
         margin: EdgeInsets.all(0),
-        color: Colors.black.withOpacity(0),
+        color: Colors.black.withOpacity(0.5),
         elevation: 5.0,
         child: Center(child: widget),
       ),
@@ -202,10 +213,10 @@ class PersistentHeader extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 56.0;
+  double get maxExtent => 45;
 
   @override
-  double get minExtent => 56.0;
+  double get minExtent => 45;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
