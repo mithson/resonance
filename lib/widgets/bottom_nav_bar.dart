@@ -101,10 +101,3 @@ class BottomNavBarState extends State<BottomNavBar> {
         ));
   }
 }
-
-class FilterChips {
-  bool isSelected;
-  String label;
-  FilterChips({required this.isSelected, required this.label});
-  
-}

@@ -11,11 +11,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomCenter,
-                colors: [
+                colors: const [
               Colors.deepPurple,
               Colors.black,
               Colors.black,
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: const Text(
                         "Recently Played",
                         style: TextStyle(
                             color: Colors.white,
