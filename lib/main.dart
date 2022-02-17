@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resonance/screens/intro.dart';
 import 'package:resonance/widgets/bottom_nav_bar.dart';
 
 void main() => runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSwatch().copyWith(secondary: Colors.black87),
       ),
       debugShowCheckedModeBanner: false,
-      home: BottomNavBar(),
+      home: SelectionScreen(),
     );
   }
 }

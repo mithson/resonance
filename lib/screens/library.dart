@@ -9,13 +9,6 @@ class Library extends StatefulWidget {
 }
 
 class _LibraryState extends State<Library> {
-  var list = [
-    'Playlists',
-    "Artists",
-    "Albums",
-    "Podcasts",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,37 +57,7 @@ class _LibraryState extends State<Library> {
                 widget: Row(
                   // Format this to meet your need
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: 10,
-                          ),
-                          for (var item in list)
-                            Padding(
-                              padding: EdgeInsets.only(left: 10),
-                              child: FilterChip(
-                                label: Text(
-                                  item,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                backgroundColor: Colors.black,
-                                shape: StadiumBorder(
-                                    side: BorderSide(color: Colors.white)),
-                                onSelected: (bool value) {
-                                  print(item);
-                                },
-                              ),
-                            ),
-                          SizedBox(
-                            width: 20,
-                          )
-                        ],
-                      ),
-                    )
-                  ],
+                  children: <Widget>[],
                 ),
               ),
             ),
@@ -142,6 +105,18 @@ class _LibraryState extends State<Library> {
                   "Playlist 52 Songs"),
               tile("On Repeat", "assets/images/album2.jpg", "Playlist for u"),
               tile("Malayalam", "assets/images/album3.jpg", "Malayalam List"),
+              tile("On Repeat", "assets/images/album6.jpg", "Playlist for u"),
+              tile("Malayalam", "assets/images/album7.jpg", "Malayalam List"),
+              tile("Weekly Discover", "assets/images/album8.jpg",
+                  "Weekly discover"),
+              tile("Liked Songs", "assets/images/album9.jpg",
+                  "Playlist 52 Songs"),
+              tile("Liked Songs", "assets/images/album1.jpg",
+                  "Playlist 52 Songs"),
+              tile("On Repeat", "assets/images/album2.jpg", "Playlist for u"),
+              tile("Malayalam", "assets/images/album3.jpg", "Malayalam List"),
+              tile("Weekly Discover", "assets/images/album4.jpg",
+                  "Weekly discover"),
               tile("Weekly Discover", "assets/images/album4.jpg",
                   "Weekly discover"),
               tile("Liked Songs", "assets/images/album5.jpg",
@@ -171,9 +146,12 @@ class _LibraryState extends State<Library> {
 
 ListTile tile(String title, String imgurl, String subtit) {
   return ListTile(
-    leading: CircleAvatar(
-      radius: 25,
-      backgroundImage: AssetImage(imgurl),
+    leading: GestureDetector(
+      onTap: () {},
+      child: CircleAvatar(
+        radius: 25,
+        backgroundImage: AssetImage(imgurl),
+      ),
     ),
     title: Text(
       title,
@@ -194,21 +172,42 @@ ListTile tile(String title, String imgurl, String subtit) {
 
 class PersistentHeader extends SliverPersistentHeaderDelegate {
   final Widget widget;
+  var list = [
+    'Playlists',
+    "Artists",
+    "Albums",
+    "Podcasts",
+  ];
 
   PersistentHeader({required this.widget});
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      width: double.infinity,
-      height: 45,
-      child: Card(
-        margin: EdgeInsets.all(0),
-        color: Colors.black.withOpacity(0.5),
-        elevation: 5.0,
-        child: Center(child: widget),
-      ),
+    return Row(
+      children: <Widget>[
+        SizedBox(
+          width: 10,
+        ),
+        for (var item in list)
+          Padding(
+            padding: EdgeInsets.only(left: 10),
+            child: FilterChip(
+              label: Text(
+                item,
+                style: TextStyle(color: Colors.white),
+              ),
+              backgroundColor: Colors.black,
+              shape: StadiumBorder(side: BorderSide(color: Colors.white)),
+              onSelected: (bool value) {
+                print(item);
+              },
+            ),
+          ),
+        SizedBox(
+          width: 20,
+        )
+      ],
     );
   }
 

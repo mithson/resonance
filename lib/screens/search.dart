@@ -96,12 +96,26 @@ class _SearchState extends State<Search> {
               height: 20,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 25),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text('Browse all',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 15)),
+            ),
+            GridView.count(
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 20,
+              children: List.generate(5, (index) {
+                return Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  color: Colors.blue,
+                );
+              }),
             ),
             SizedBox(
               height: 10,
