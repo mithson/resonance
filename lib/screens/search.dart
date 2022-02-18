@@ -90,8 +90,10 @@ class _SearchState extends State<Search> {
                       fontSize: 18)),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding:
+                  EdgeInsets.only(left: 20, top: 20, right: 20, bottom: 10),
               child: GridView.builder(
+                padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),
                 itemCount: 4,
@@ -99,51 +101,35 @@ class _SearchState extends State<Search> {
                     context, 'Pop', Colors.red, 'assets/images/album7.jpg'),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 2,
+                    childAspectRatio: 1.8666,
                     crossAxisSpacing: 15,
                     mainAxisSpacing: 15),
               ),
             ),
-
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Text('Browse all',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 15)),
+                      fontSize: 18)),
             ),
-            // GridView.count(
-            //   physics: BouncingScrollPhysics(),
-            //   scrollDirection: Axis.vertical,
-            //   shrinkWrap: true,
-            //   crossAxisCount: 2,
-            //   crossAxisSpacing: 10,
-            //   mainAxisSpacing: 20,
-            //   children: List.generate(5, (index) {
-            //     return Container(
-            //       margin: EdgeInsets.symmetric(horizontal: 20),
-            //       color: Colors.blue,
-            //     );
-            //   }),
-            // ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding:
+                  EdgeInsets.only(left: 20, top: 0, right: 20, bottom: 120),
               child: GridView.builder(
+                padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (context, index) => ItemTile(
-                    context, 'Pop', Colors.red, 'assets/images/album7.jpg'),
+                    context, 'Freaks', Colors.red, 'assets/images/album6.jpg'),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20),
+                    childAspectRatio: 1.8666,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15),
               ),
-            ),
-            SizedBox(
-              height: 10,
             ),
           ],
         ),
@@ -154,8 +140,9 @@ class _SearchState extends State<Search> {
   Widget ItemTile(
       BuildContext context, String text, Color color, String image) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(5),
+      borderRadius: BorderRadius.circular(3),
       child: Container(
+        height: 180,
         decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(5),
@@ -200,12 +187,12 @@ class _SearchState extends State<Search> {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
               child: Text(text,
                   style: Theme.of(context)
                       .textTheme
                       .bodyText1!
-                      .copyWith(fontSize: 20, fontWeight: FontWeight.bold)),
+                      .copyWith(fontSize: 18, fontWeight: FontWeight.bold)),
             ),
           ],
         ),
