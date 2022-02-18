@@ -87,14 +87,24 @@ class _SearchState extends State<Search> {
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 15)),
+                      fontSize: 18)),
             ),
-            SizedBox(
-              height: 10,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
+                itemCount: 4,
+                itemBuilder: (context, index) => ItemTile(
+                    context, 'Pop', Colors.red, 'assets/images/album7.jpg'),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 2,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15),
+              ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text('Browse all',
@@ -103,19 +113,34 @@ class _SearchState extends State<Search> {
                       fontWeight: FontWeight.bold,
                       fontSize: 15)),
             ),
-            GridView.count(
-              physics: BouncingScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 20,
-              children: List.generate(5, (index) {
-                return Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20),
-                  color: Colors.blue,
-                );
-              }),
+            // GridView.count(
+            //   physics: BouncingScrollPhysics(),
+            //   scrollDirection: Axis.vertical,
+            //   shrinkWrap: true,
+            //   crossAxisCount: 2,
+            //   crossAxisSpacing: 10,
+            //   mainAxisSpacing: 20,
+            //   children: List.generate(5, (index) {
+            //     return Container(
+            //       margin: EdgeInsets.symmetric(horizontal: 20),
+            //       color: Colors.blue,
+            //     );
+            //   }),
+            // ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
+                itemCount: 10,
+                itemBuilder: (context, index) => ItemTile(
+                    context, 'Pop', Colors.red, 'assets/images/album7.jpg'),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20),
+              ),
             ),
             SizedBox(
               height: 10,
@@ -126,7 +151,8 @@ class _SearchState extends State<Search> {
     );
   }
 
-  Widget cards(String text, Color color, String image) {
+  Widget ItemTile(
+      BuildContext context, String text, Color color, String image) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(5),
       child: Container(

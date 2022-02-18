@@ -36,7 +36,7 @@ class BottomNavBarState extends State<BottomNavBar> {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5), color: Colors.purple),
+              borderRadius: BorderRadius.circular(5), color: Colors.deepPurple),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
