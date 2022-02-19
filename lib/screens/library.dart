@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Library extends StatefulWidget {
   const Library({Key? key}) : super(key: key);
@@ -24,10 +24,10 @@ class _LibraryState extends State<Library> {
               pinned: true,
               actions: [
                 Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                  IconButton(
-                      onPressed: null,
-                      icon: Icon(FontAwesomeIcons.search,
-                          size: 20, color: Colors.white)),
+                  // IconButton(
+                  //     onPressed: null,
+                  //     icon: Icon(FontAwesomeIcons.search,
+                  //         size: 20, color: Colors.white)),
                   IconButton(
                     onPressed: null,
                     icon: Icon(

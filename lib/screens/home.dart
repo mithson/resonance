@@ -64,6 +64,7 @@ class _HomeState extends State<Home> {
                 Row(
                   children: [
                     Expanded(
+                      flex: 2,
                       child: Container(
                         height: 60,
                         width: MediaQuery.of(context).size.width / 2.5,
@@ -83,10 +84,11 @@ class _HomeState extends State<Home> {
                               child: Image.asset('assets/images/top50.jpg')),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
-                            child: Text('Top 50',
+                            child: Text('Top 50 ',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 15,
+                                    overflow: TextOverflow.ellipsis,
                                     fontWeight: FontWeight.w600)),
                           ),
                         ]),
@@ -96,6 +98,7 @@ class _HomeState extends State<Home> {
                       width: 10,
                     ),
                     Expanded(
+                      flex: 2,
                       child: Container(
                         height: 60,
                         width: MediaQuery.of(context).size.width / 2.5,
@@ -180,7 +183,7 @@ class _HomeState extends State<Home> {
                             Container(
                               width: 170,
                               padding: EdgeInsets.only(left: 18),
-                              child: Expanded(
+                              child: Flexible(
                                   child: Text(
                                 'Cigarettes After Sex Cigarettes After Cigarettes After',
                                 overflow: TextOverflow.ellipsis,
@@ -220,13 +223,12 @@ class _HomeState extends State<Home> {
                             Container(
                               width: 170,
                               padding: EdgeInsets.only(left: 18),
-                              child: Expanded(
-                                  child: Text(
+                              child: Text(
                                 '50 Cent ',
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: TextStyle(color: Colors.white),
-                              )),
+                              ),
                             ),
                           ]),
                     ],
@@ -297,3 +299,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
