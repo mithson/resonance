@@ -1,6 +1,9 @@
 // single gridView = bolly + holly + ...
 // bolly k starting k 5 only and so on
 // onclick of gridView it should show more 5 from respective genre
+// List a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// List b = a.sublist(4,6);
+// print(b);
 
 import 'package:flutter/material.dart';
 
@@ -25,6 +28,14 @@ class ArtistsScreen extends StatelessWidget {
             ),
             backgroundColor: Colors.black,
             title: Text(''),
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {},
+          label: Text(
+            'Done',
+            style: TextStyle(color: Colors.white),
           ),
         ),
         body: ListView(

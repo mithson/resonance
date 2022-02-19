@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resonance/screens/artists.dart';
 
 class LangScreen extends StatefulWidget {
   const LangScreen({Key? key}) : super(key: key);
@@ -22,6 +23,23 @@ class _LangScreenState extends State<LangScreen> {
                     'Languages',
                   ))),
           backgroundColor: Colors.black,
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: !selectedList.isEmpty
+              ? FloatingActionButton.extended(
+                  backgroundColor: Colors.white,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ArtistsScreen()));
+                  },
+                  label: Text(
+                    'Next',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                )
+              : null,
           body: Padding(
             padding: EdgeInsets.only(left: 20, top: 10, right: 20, bottom: 90),
             child: GridView.builder(
@@ -48,7 +66,13 @@ class _LangScreenState extends State<LangScreen> {
                     child: Container(
                       height: 180,
                       decoration: BoxDecoration(
+                        border: selectedList.contains(title[index])
+                            ? Border.all(
+                                color: Colors.white70,
+                              )
+                            : null,
                         // image: DecorationImage(
+                        //   scale: 0.5,
                         //   image: AssetImage(image[index]),
                         // ),
                         color: selectedList.contains(title[index])
