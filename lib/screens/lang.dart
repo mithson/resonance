@@ -48,20 +48,27 @@ class _LangScreenState extends State<LangScreen> {
                     child: Container(
                       height: 180,
                       decoration: BoxDecoration(
+                        // image: DecorationImage(
+                        //   image: AssetImage(image[index]),
+                        // ),
                         color: selectedList.contains(title[index])
                             ? Colors.green
                             : Colors.purple,
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: Row(children: [
-                        Text(
-                          title[index],
-                        ),
-                        Spacer(),
-                        Visibility(
-                            visible: selectedList.contains(title[index]),
-                            child: Icon(Icons.check, color: Colors.black)),
-                      ]),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12.0, vertical: 10),
+                        child: Row(children: [
+                          Text(
+                            title[index],
+                          ),
+                          Spacer(),
+                          Visibility(
+                              visible: selectedList.contains(title[index]),
+                              child: Icon(Icons.check, color: Colors.black)),
+                        ]),
+                      ),
                     ),
                   ),
                 ),
