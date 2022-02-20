@@ -35,11 +35,14 @@ class Email extends StatefulWidget {
   State<Email> createState() => _EmailState();
 }
 
+final email = TextEditingController();
+late bool isEmpty = true;
+var user = email.text;
+
 class _EmailState extends State<Email> {
   FocusNode _focus = FocusNode();
   @override
   Widget build(BuildContext context) {
-    final controller = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -72,7 +75,15 @@ class _EmailState extends State<Email> {
                         left: 12, top: 10, right: 15, bottom: 0),
                     child: TextField(
                       onTap: () {
-                        print(controller.text);
+                        setState(() {
+                          if (email.text.isEmpty) {
+                            isEmpty = true;
+                          } else {
+                            isEmpty = false;
+                          }
+                        });
+                        // print(val);
+                        print(email.text);
                       },
                       focusNode: _focus,
                       cursorColor: Colors.white,
@@ -83,21 +94,23 @@ class _EmailState extends State<Email> {
                       maxLines: 1,
                       maxLength: 30,
                       cursorWidth: 1,
-                      controller: controller,
+                      controller: email,
                       decoration: InputDecoration(
+                        // counterText: 'You\'ll need to confirm this email later',
+                        // counterStyle: TextStyle(color: Colors.white),
+                        border: InputBorder.none,
                         contentPadding: EdgeInsets.only(
                             top: 35, bottom: 0, left: 10, right: 10),
                         fillColor: Colors.white30,
                         filled: true,
-                        focusColor: Colors.red,
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.transparent),
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(5),
                         ),
                       ),
                     )),
                 Padding(
-                  padding: EdgeInsets.only(left: 14, top: 0, right: 15),
+                  padding: EdgeInsets.only(left: 15, top: 0, right: 15),
                   child: Text('You\'ll need to confirm this email later',
                       style: TextStyle(
                           color: Colors.white,
@@ -108,7 +121,7 @@ class _EmailState extends State<Email> {
                   height: 30,
                 ),
                 Visibility(
-                  visible: controller.text.isNotEmpty,
+                  visible: isEmpty,
                   child: Align(
                     alignment: Alignment.center,
                     child: MaterialButton(
