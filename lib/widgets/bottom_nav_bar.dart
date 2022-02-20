@@ -68,7 +68,7 @@ class BottomNavBarState extends State<BottomNavBar> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.black87.withOpacity(0.2),
+              Colors.black87.withOpacity(0.1),
               Colors.black87,
             ],
             begin: Alignment.topCenter,

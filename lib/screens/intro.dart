@@ -1,160 +1,137 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resonance/widgets/bottom_nav_bar.dart';
+import 'package:resonance/screens/lang.dart';
 
-class SelectionScreen extends StatefulWidget {
-  const SelectionScreen({Key? key}) : super(key: key);
+class IntroScreen extends StatefulWidget {
+  const IntroScreen({Key? key}) : super(key: key);
 
   @override
-  State<SelectionScreen> createState() => _SelectionScreenState();
+  State<IntroScreen> createState() => _IntroScreenState();
 }
 
-class _SelectionScreenState extends State<SelectionScreen> {
-  List<Widget> slides = items
-      .map((item) => Container(
-          padding: EdgeInsets.symmetric(horizontal: 18.0),
-          child: Column(
-            children: <Widget>[
-              Flexible(
-                flex: 1,
-                fit: FlexFit.tight,
-                child: Image.asset(
-                  item['image'],
-                  fit: BoxFit.fitWidth,
-                  width: 220.0,
-                  alignment: Alignment.bottomCenter,
-                ),
-              ),
-              Flexible(
-                flex: 1,
-                fit: FlexFit.tight,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30.0),
-                  child: Column(
-                    children: <Widget>[
-                      Text(item['header'],
-                          style: TextStyle(
-                              fontSize: 50.0,
-                              fontWeight: FontWeight.w300,
-                              color: Color(0XFF3F3D56),
-                              height: 2.0)),
-                      Text(
-                        item['description'],
-                        style: TextStyle(
-                            color: Colors.grey,
-                            letterSpacing: 1.2,
-                            fontSize: 16.0,
-                            height: 1.3),
-                        textAlign: TextAlign.center,
-                      )
-                    ],
-                  ),
-                ),
-              )
-            ],
-          )))
-      .toList();
-
-  List<Widget> indicator() => List<Widget>.generate(
-      slides.length,
-      (index) => Container(
-            margin: EdgeInsets.symmetric(horizontal: 3.0),
-            height: 10.0,
-            width: 10.0,
-            decoration: BoxDecoration(
-                color: currentPage.round() == index
-                    ? Color(0XFF256075)
-                    : Color(0XFF256075).withOpacity(0.2),
-                borderRadius: BorderRadius.circular(10.0)),
-          ));
-
-  double currentPage = 0.0;
-  final _pageViewController = new PageController();
-
-  @override
-  void initState() {
-    super.initState();
-    _pageViewController.addListener(() {
-      setState(() {
-        currentPage = _pageViewController.page!;
-      });
-    });
-  }
+class _IntroScreenState extends State<IntroScreen> {
+  final controller = new PageController(initialPage: 1);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Stack(
-          children: [
-            PageView.builder(
-              controller: _pageViewController,
-              itemCount: slides.length,
-              itemBuilder: (BuildContext context, int index) {
-                return slides[index];
-              },
-            ),
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  margin: EdgeInsets.only(top: 70.0),
-                  padding: EdgeInsets.symmetric(vertical: 40.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: indicator(),
-                  ),
-                )
-                //  ),
-                ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: CupertinoButton(
-                color: Colors.blue,
-                child: Padding(padding: EdgeInsets.all(1), child: Text('Next')),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BottomNavBar()));
-                },
-              ),
-            ),
-
-            // )
-          ],
-        ),
+      backgroundColor: Colors.black,
+      body: PageView(
+        // physics: NeverScrollableScrollPhysics(),
+        controller: controller,
+        scrollDirection: Axis.horizontal,
+        children: [
+          Email(),
+        ],
       ),
     );
   }
 }
 
-List items = [
-  {
-    "header": "Learn",
-    "description":
-        "Online chat which provides its users maximum functionality to simplify the search",
-    "image": "assets/images/album2.jpg"
-  },
-  {
-    "header": "Build",
-    "description":
-        "Online chat which provides its users maximum functionality to simplify the search",
-    "image": "assets/images/album3.jpg"
-  },
-  {
-    "header": "Launch",
-    "description":
-        "Online chat which provides its users maximum functionality to simplify the search",
-    "image": "assets/images/album1.jpg"
-  },
-  {
-    "header": "Invest",
-    "description":
-        "Online chat which provides its users maximum functionality to simplify the search",
-    "image": "assets/images/album5.jpg"
-  },
-  {
-    "header": "Travel",
-    "description":
-        "Online chat which provides its users maximum functionality to simplify the search",
-    "image": "assets/images/album4.jpg"
+class Email extends StatefulWidget {
+  const Email({Key? key}) : super(key: key);
+
+  @override
+  State<Email> createState() => _EmailState();
+}
+
+class _EmailState extends State<Email> {
+  FocusNode _focus = FocusNode();
+  @override
+  Widget build(BuildContext context) {
+    final controller = TextEditingController();
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        leading: Padding(
+            padding: EdgeInsets.only(left: 12),
+            child: Icon(Icons.arrow_back_ios, color: Colors.white)),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+        title: Text('Create account',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w400)),
+      ),
+      body: Align(
+          alignment: Alignment.center,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 20, top: 20),
+                  child: Text('Whats your Email?',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold)),
+                ),
+                Padding(
+                    padding: EdgeInsets.only(
+                        left: 12, top: 10, right: 15, bottom: 0),
+                    child: TextField(
+                      onTap: () {
+                        print(controller.text);
+                      },
+                      focusNode: _focus,
+                      cursorColor: Colors.white,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      cursorHeight: 30,
+                      maxLines: 1,
+                      maxLength: 30,
+                      cursorWidth: 1,
+                      controller: controller,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(
+                            top: 35, bottom: 0, left: 10, right: 10),
+                        fillColor: Colors.white30,
+                        filled: true,
+                        focusColor: Colors.red,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                    )),
+                Padding(
+                  padding: EdgeInsets.only(left: 14, top: 0, right: 15),
+                  child: Text('You\'ll need to confirm this email later',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400)),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Visibility(
+                  visible: controller.text.isNotEmpty,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: MaterialButton(
+                      height: 50,
+                      minWidth: 100,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LangScreen()));
+                      },
+                      child: Text(
+                        "Next",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ),
+                )
+              ])),
+    );
   }
-];
+}

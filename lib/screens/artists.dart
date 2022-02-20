@@ -6,18 +6,32 @@
 // print(b);
 
 import 'package:flutter/material.dart';
+import 'package:resonance/data.dart';
+import 'package:resonance/widgets/bottom_nav_bar.dart';
 
-class ArtistsScreen extends StatelessWidget {
+class ArtistsScreen extends StatefulWidget {
   const ArtistsScreen({Key? key}) : super(key: key);
 
   @override
+  State<ArtistsScreen> createState() => _ArtistsScreenState();
+}
+
+class _ArtistsScreenState extends State<ArtistsScreen> {
+  List<String> selectedList = [];
+
+  late var all = a1 + a2;
+  // List b = a.sublist(4, 6);
+
+  @override
   Widget build(BuildContext context) {
+    // print(all); // init errors goes if we use it here
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(120),
           child: AppBar(
+            automaticallyImplyLeading: false,
             flexibleSpace: Container(
               margin: EdgeInsets.only(top: 30, left: 20),
               child: Text('Choose 5 or more artits \nyou like?',
@@ -27,52 +41,89 @@ class ArtistsScreen extends StatelessWidget {
                   )),
             ),
             backgroundColor: Colors.black,
-            title: Text(''),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
-          label: Text(
-            'Done',
-            style: TextStyle(color: Colors.white),
+        floatingActionButton: Visibility(
+          visible: !selectedList.isEmpty,
+          child: FloatingActionButton.extended(
+            backgroundColor: Colors.white,
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => BottomNavBar()));
+            },
+            label: Text(
+              'Done',
+              style: TextStyle(color: Colors.black),
+            ),
           ),
         ),
-        body: ListView(
-            scrollDirection: Axis.vertical,
-            physics: BouncingScrollPhysics(),
-            children: [
-              Column(children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: 20, top: 10, right: 20, bottom: 120),
-                  child: GridView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    itemCount: 50,
-                    itemBuilder: (context, index) => ItemTile(context, 'Freaks',
-                        Colors.purple, 'https://picsum.photos/250?image=9'),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        childAspectRatio: 2,
-                        crossAxisSpacing: 5,
-                        mainAxisSpacing: 5),
-                  ),
-                ),
-              ]),
+        body: GridView.builder(
+          padding: EdgeInsets.zero,
+          physics: BouncingScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 6,
+          itemBuilder: (context, index) => GestureDetector(
+            onTap: () {
+              if (selectedList.contains(a2[index])) {
+                setState(() {
+                  selectedList.removeWhere((val) => val == a2[index]);
+                  print(selectedList);
+                });
+              } else {
+                setState(() {
+                  selectedList.add(a2[index]);
+                  print(selectedList);
+                });
+              }
+            },
+            child: Stack(children: [
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: Container(
+                        // padding: EdgeInsets.only(top: 5),
+                        height: 150,
+                        child: CircleAvatar(
+                          backgroundImage:
+                              const AssetImage('assets/images/album8.jpg'),
+                          radius: 70,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      a2[index],
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: TextStyle(fontSize: 12, color: Colors.white),
+                    ),
+
+                    // circle container card for a2
+                  ]),
+              Visibility(
+                  visible: selectedList.contains(a2[index]),
+                  child: Positioned(
+                      top: 6,
+                      right: 10,
+                      child: CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Colors.white,
+                          child: Icon(Icons.check, color: Colors.black)))),
             ]),
+          ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              // childAspectRatio: 2,
+              crossAxisSpacing: 0,
+              mainAxisSpacing: 10),
+        ),
       ),
     );
   }
-}
-
-Widget ItemTile(BuildContext context, String text, Color color, String image) {
-  return Column(children: [
-    CircleAvatar(
-      radius: 30.0,
-      backgroundImage: NetworkImage('https://unsplash.com/photos/Z_bTArFy6ks'),
-      backgroundColor: Colors.red,
-    ),
-    Text('abhi'),
-  ]);
 }

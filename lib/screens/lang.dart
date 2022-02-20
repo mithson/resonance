@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resonance/screens/artists.dart';
+import 'package:resonance/data.dart';
 
 class LangScreen extends StatefulWidget {
   const LangScreen({Key? key}) : super(key: key);
@@ -19,8 +20,9 @@ class _LangScreenState extends State<LangScreen> {
               preferredSize: Size.fromHeight(80),
               child: AppBar(
                   backgroundColor: Colors.black,
+                  automaticallyImplyLeading: false,
                   title: Text(
-                    'Languages',
+                    'What Music do you like ?',
                   ))),
           backgroundColor: Colors.black,
           floatingActionButtonLocation:
@@ -47,7 +49,6 @@ class _LangScreenState extends State<LangScreen> {
               itemCount: title.length,
               itemBuilder: (context, index) => GestureDetector(
                 child: GestureDetector(
-                  // onLongPress: () {},
                   onTap: () {
                     if (selectedList.contains(title[index])) {
                       setState(() {
@@ -107,20 +108,5 @@ class _LangScreenState extends State<LangScreen> {
     );
   }
 
-  var image = [
-    'assets/images/album6.jpg',
-    'assets/images/album7.jpg',
-    'assets/images/album6.jpg',
-    'assets/images/album7.jpg',
-    'assets/images/album6.jpg',
-    'assets/images/album7.jpg'
-  ];
-  var title = [
-    'English',
-    'Hindi',
-    'Marathi',
-    'Punjabi',
-    'Tamil',
-    'italian',
-  ];
+
 }

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSwatch().copyWith(secondary: Colors.black87),
       ),
       debugShowCheckedModeBanner: false,
-      home: LangScreen(),
+      home: IntroScreen(),
     );
   }
 }
