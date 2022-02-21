@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:resonance/data.dart';
 import 'package:resonance/screens/lang.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -36,10 +37,12 @@ class Email extends StatefulWidget {
 }
 
 final email = TextEditingController();
-late bool isEmpty = true;
+
 var user = email.text;
 
 class _EmailState extends State<Email> {
+  final email = TextEditingController();
+  late bool isEmpty = true;
   FocusNode _focus = FocusNode();
   @override
   Widget build(BuildContext context) {
@@ -74,16 +77,9 @@ class _EmailState extends State<Email> {
                     padding: EdgeInsets.only(
                         left: 12, top: 10, right: 15, bottom: 0),
                     child: TextField(
-                      onTap: () {
-                        setState(() {
-                          if (email.text.isEmpty) {
-                            isEmpty = true;
-                          } else {
-                            isEmpty = false;
-                          }
-                        });
+                      onChanged: (val) {
+                        setState(() {});
                         // print(val);
-                        print(email.text);
                       },
                       focusNode: _focus,
                       cursorColor: Colors.white,
@@ -121,7 +117,7 @@ class _EmailState extends State<Email> {
                   height: 30,
                 ),
                 Visibility(
-                  visible: isEmpty,
+                  visible: email.text == '' ? false : true,
                   child: Align(
                     alignment: Alignment.center,
                     child: MaterialButton(
@@ -132,6 +128,7 @@ class _EmailState extends State<Email> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       onPressed: () {
+                        userEmails = email.text;
                         Navigator.push(
                             context,
                             MaterialPageRoute(

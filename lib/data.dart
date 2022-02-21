@@ -25,3 +25,5 @@ var image = [
   'assets/images/album5.jpg',
   'assets/images/album7.jpg',
 ];
+
+var userEmails;

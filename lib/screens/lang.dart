@@ -107,6 +107,4 @@ class _LangScreenState extends State<LangScreen> {
           )),
     );
   }
-
-
 }
