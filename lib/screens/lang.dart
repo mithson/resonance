@@ -31,10 +31,8 @@ class _LangScreenState extends State<LangScreen> {
               ? FloatingActionButton.extended(
                   backgroundColor: Colors.white,
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ArtistsScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Artists()));
                   },
                   label: Text(
                     'Next',

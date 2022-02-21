@@ -9,14 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:resonance/data.dart';
 import 'package:resonance/widgets/bottom_nav_bar.dart';
 
-class ArtistsScreen extends StatefulWidget {
-  const ArtistsScreen({Key? key}) : super(key: key);
+class Artists extends StatefulWidget {
+  const Artists({Key? key}) : super(key: key);
 
   @override
-  State<ArtistsScreen> createState() => _ArtistsScreenState();
+  State<Artists> createState() => _ArtistsState();
 }
 
-class _ArtistsScreenState extends State<ArtistsScreen> {
+class _ArtistsState extends State<Artists> {
   List<String> selectedList = [];
 
   late var all = a1 + a2;
