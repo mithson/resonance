@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resonance/screens/artists.dart';
+import 'package:resonance/data.dart';
 import 'package:resonance/screens/name.dart';
 
 class Gender extends StatefulWidget {
@@ -74,6 +74,7 @@ class _GenderState extends State<Gender> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   onPressed: () {
+                    userGender = _selectedValue;
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Name()));
                   },

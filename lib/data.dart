@@ -26,4 +26,4 @@ var image = [
   'assets/images/album7.jpg',
 ];
 
-var userEmails;
+var userEmail, userPassword, userDOB, userLang, userGender, userName;

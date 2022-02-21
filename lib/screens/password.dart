@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:resonance/data.dart';
 import 'package:resonance/screens/dob.dart';
-import 'package:resonance/screens/gender.dart';
-import 'package:resonance/screens/lang.dart';
+import 'package:resonance/data.dart';
 
 class Password extends StatefulWidget {
   const Password({Key? key}) : super(key: key);
@@ -12,8 +10,6 @@ class Password extends StatefulWidget {
 }
 
 final password = TextEditingController();
-
-var userPassword = password.text;
 
 class _PasswordState extends State<Password> {
   final password = TextEditingController();
@@ -117,7 +113,7 @@ class _PasswordState extends State<Password> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       onPressed: () {
-                        userEmails = password.text;
+                        userPassword = password.text;
                         Navigator.push(
                             context,
                             MaterialPageRoute(

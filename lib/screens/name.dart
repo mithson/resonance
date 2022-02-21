@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resonance/data.dart';
 import 'package:resonance/widgets/bottom_nav_bar.dart';
 
 class Name extends StatefulWidget {
@@ -9,7 +10,7 @@ class Name extends StatefulWidget {
 }
 
 class _NameState extends State<Name> {
-  final userName = TextEditingController();
+  final name = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +53,7 @@ class _NameState extends State<Name> {
               maxLines: 1,
               maxLength: 30,
               cursorWidth: 1,
-              controller: userName,
+              controller: name,
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -79,7 +80,7 @@ class _NameState extends State<Name> {
             height: 30,
           ),
           Visibility(
-            visible: userName.text == '' ? false : true,
+            visible: name.text == '' ? false : true,
             child: Align(
               alignment: Alignment.center,
               child: MaterialButton(
@@ -90,8 +91,11 @@ class _NameState extends State<Name> {
                   borderRadius: BorderRadius.circular(30),
                 ),
                 onPressed: () {
+                  userName = name.text;
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => BottomNavBar()));
+                  print(
+                      '$userEmail, $userPassword, $userDOB, $userGender, $userName');
                 },
                 child: Text(
                   "CREATE",

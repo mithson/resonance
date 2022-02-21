@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resonance/screens/artists.dart';
+import 'package:resonance/data.dart';
 import 'package:resonance/screens/gender.dart';
 
 class DateOfBirth extends StatefulWidget {
@@ -121,6 +121,7 @@ class DateOfBirthState extends State<DateOfBirth> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   onPressed: () {
+                    userDOB = date;
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Gender()));
                   },

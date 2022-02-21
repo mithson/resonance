@@ -100,7 +100,7 @@ class _EmailState extends State<Email> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       onPressed: () {
-                        userEmails = email.text;
+                        userEmail = email.text;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
