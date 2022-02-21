@@ -109,22 +109,25 @@ class DateOfBirthState extends State<DateOfBirth> {
             SizedBox(
               height: 30,
             ),
-            Align(
-              alignment: Alignment.center,
-              child: MaterialButton(
-                height: 50,
-                minWidth: 100,
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Gender()));
-                },
-                child: Text(
-                  "NEXT",
-                  style: TextStyle(color: Colors.black),
+            Visibility(
+              visible: date == DateTime(2001, 12, 09) ? false : true,
+              child: Align(
+                alignment: Alignment.center,
+                child: MaterialButton(
+                  height: 50,
+                  minWidth: 100,
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Gender()));
+                  },
+                  child: Text(
+                    "NEXT",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
             )

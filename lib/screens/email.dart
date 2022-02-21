@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:resonance/data.dart';
-import 'package:resonance/screens/lang.dart';
+import 'package:resonance/screens/password.dart';
 
-class Password extends StatefulWidget {
-  const Password({Key? key}) : super(key: key);
+class Email extends StatefulWidget {
+  const Email({Key? key}) : super(key: key);
 
   @override
-  State<Password> createState() => _PasswordState();
+  State<Email> createState() => _EmailState();
 }
 
-final password = TextEditingController();
+final email = TextEditingController();
 
-var userPassword = password.text;
+var user = email.text;
 
-class _PasswordState extends State<Password> {
-  final password = TextEditingController();
-  bool? isPassowrdValid;
-  bool _passwordVisible = false;
+class _EmailState extends State<Email> {
+  final email = TextEditingController();
+  bool? isEmailValid;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        leading: Padding(
-            padding: EdgeInsets.only(left: 12),
-            child: Icon(Icons.arrow_back_ios, color: Colors.white)),
+        // leading: Padding(
+        //     padding: EdgeInsets.only(left: 12),
+        //     child: Icon(Icons.arrow_back_ios, color: Colors.white)),
         centerTitle: true,
         backgroundColor: Colors.black,
         title: Text('Create account',
@@ -41,7 +40,7 @@ class _PasswordState extends State<Password> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(left: 20, top: 20),
-                  child: Text('Create Password',
+                  child: Text('Whats your Email?',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -50,7 +49,6 @@ class _PasswordState extends State<Password> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   child: TextField(
-                    obscureText: !_passwordVisible,
                     onChanged: (val) {
                       setState(() {});
                       // print(val);
@@ -63,21 +61,8 @@ class _PasswordState extends State<Password> {
                     maxLines: 1,
                     maxLength: 30,
                     cursorWidth: 1,
-                    controller: password,
+                    controller: email,
                     decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _passwordVisible = !_passwordVisible;
-                          });
-                        },
-                        icon: Icon(
-                          _passwordVisible
-                              ? Icons.remove_red_eye
-                              : Icons.visibility_off,
-                          color: Colors.white,
-                        ),
-                      ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(4)),
                         borderSide: BorderSide(width: 1, color: Colors.white),
@@ -94,7 +79,7 @@ class _PasswordState extends State<Password> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 18, top: 0, right: 15),
-                  child: Text('Use at least 8 characters',
+                  child: Text('You\'ll need to confirm this email later',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 12,
@@ -104,7 +89,7 @@ class _PasswordState extends State<Password> {
                   height: 30,
                 ),
                 Visibility(
-                  visible: password.text == '' ? false : true,
+                  visible: email.text == '' ? false : true,
                   child: Align(
                     alignment: Alignment.center,
                     child: MaterialButton(
@@ -115,11 +100,11 @@ class _PasswordState extends State<Password> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       onPressed: () {
-                        userEmails = password.text;
+                        userEmails = email.text;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LangScreen()));
+                                builder: (context) => Password()));
                       },
                       child: Text(
                         "NEXT",

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:resonance/screens/artists.dart';
 import 'package:resonance/screens/lang.dart';
 import 'package:resonance/widgets/bottom_nav_bar.dart';
-import 'package:resonance/widgets/email.dart';
+import 'package:resonance/screens/email.dart';
 
 void main() => runApp(const MyApp());
 

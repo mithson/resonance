@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resonance/screens/artists.dart';
+import 'package:resonance/screens/name.dart';
 
 class Gender extends StatefulWidget {
   const Gender({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _GenderState extends State<Gender> {
           children: [
             Padding(
               padding: EdgeInsets.only(left: 20, top: 20),
-              child: Text('What is your gender',
+              child: Text('What\'s your gender',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 25,
@@ -61,22 +62,25 @@ class _GenderState extends State<Gender> {
             SizedBox(
               height: 30,
             ),
-            Align(
-              alignment: Alignment.center,
-              child: MaterialButton(
-                height: 50,
-                minWidth: 100,
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Artists()));
-                },
-                child: Text(
-                  "NEXT",
-                  style: TextStyle(color: Colors.black),
+            Visibility(
+              visible: _selectedValue == 'Select' ? false : true,
+              child: Align(
+                alignment: Alignment.center,
+                child: MaterialButton(
+                  height: 50,
+                  minWidth: 100,
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Name()));
+                  },
+                  child: Text(
+                    "NEXT",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
             )
@@ -101,7 +105,7 @@ class _GenderState extends State<Gender> {
                   for (var i in options)
                     Text(
                       i.toString(),
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                      style: TextStyle(fontSize: 20, color: Colors.black),
                     )
                 ],
                 onSelectedItemChanged: (value) {
