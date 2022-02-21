@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:resonance/data.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -8,24 +9,6 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  dynamic browseAll = [
-    {
-      'image': "https://picsum.photos/250?image=9",
-      'genre': 'pop',
-      'color': 'Colors.white',
-    },
-    {
-      'image': "https://picsum.photos/250?image=9",
-      'genre': 'rock',
-      'color': 'Colors.red',
-    },
-    {
-      'image': "https://picsum.photos/250?image=9",
-      'genre': 'pop',
-      'color': 'Colors.white',
-    }
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,7 +81,7 @@ class _SearchState extends State<Search> {
                 physics: BouncingScrollPhysics(),
                 itemCount: 4,
                 itemBuilder: (context, index) => ItemTile(
-                    context, 'Pop', Colors.red, 'assets/images/album7.jpg'),
+                    context, topGenres[index], Colors.red, image[index]),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 1.8666,
@@ -121,9 +104,10 @@ class _SearchState extends State<Search> {
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),
-                itemCount: 10,
-                itemBuilder: (context, index) => ItemTile(
-                    context, 'Freaks', Colors.red, 'assets/images/album6.jpg'),
+                itemCount: browseAll
+                    .length, // 10 hona chahiye it is handled from data.dart file jitna wo hoga yaha bhi utna aana chahiye
+                itemBuilder: (context, index) =>
+                    ItemTile(context, browseAll[index], Colors.red, i10[index]),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 1.8666,

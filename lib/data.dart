@@ -1,3 +1,28 @@
+var userEmail, userPassword, userDOB, userLang, userGender, userName;
+var homeTopTile = [
+  'Top 50',
+  'Liked Songs',
+  'Curated Playlists',
+  'All Out 2000\'s'
+];
+var topGenres = [
+  'Hollywood',
+  'Indie',
+  'Pop',
+  'italian',
+];
+var browseAll = [
+  'Hindi',
+  'Marathi',
+  'Punjabi',
+  'freak',
+  'Tamil',
+  'italian',
+  'Hollywood',
+  'Indie',
+  'Pop',
+  'italian',
+];
 List<String> a1 = [
   'Rogerthat ',
   'Hindi',
@@ -25,5 +50,15 @@ var image = [
   'assets/images/album5.jpg',
   'assets/images/album7.jpg',
 ];
-
-var userEmail, userPassword, userDOB, userLang, userGender, userName;
+var i10 = [
+  'assets/images/album1.jpg',
+  'assets/images/album2.jpg',
+  'assets/images/album3.jpg',
+  'assets/images/album4.jpg',
+  'assets/images/album5.jpg',
+  'assets/images/album7.jpg',
+  'assets/images/album2.jpg',
+  'assets/images/album3.jpg',
+  'assets/images/album4.jpg',
+  'assets/images/album5.jpg',
+];

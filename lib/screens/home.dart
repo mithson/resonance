@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resonance/data.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -141,7 +142,7 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 20, top: 40, bottom: 20),
+                  padding: EdgeInsets.only(left: 20, top: 40, bottom: 10),
                   child: Row(children: [
                     Text('Your Top Mixes',
                         textAlign: TextAlign.left,
@@ -154,140 +155,135 @@ class _HomeState extends State<Home> {
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 20.0),
                   height: 220.0,
-                  child: ListView(
+                  child: ListView.builder(
+                    itemCount: title.length,
                     physics: ClampingScrollPhysics(),
-                    // This next line does the trick.
                     scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              // curved container card
-                              child: Container(
-                                height: 170,
-                                padding: EdgeInsets.all(2),
-                                margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
-                                width: 170,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(
-                                          'assets/images/album8.jpg')),
-                                ),
-                              ),
-                            ),
-                            Container(
+                    itemBuilder: (context, index) => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            // curved container card
+                            child: Container(
+                              height: 170,
+                              padding: EdgeInsets.all(2),
+                              margin: EdgeInsets.fromLTRB(15, 0, 5, 10),
                               width: 170,
-                              padding: EdgeInsets.only(left: 18),
-                              child: Text(
-                                'Cigarettes After Sex Cigarettes After Cigarettes After',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: TextStyle(color: Colors.white),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(image[index])),
                               ),
                             ),
-                          ]),
-                      Container(
-                          width: 160.0,
-                          child: CircleAvatar(
-                            radius: 50,
-                            backgroundImage:
-                                AssetImage('assets/images/album3.jpg'),
-                          )),
-                      // sharp container card
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                height: 170,
-                                padding: EdgeInsets.all(2),
-                                margin: EdgeInsets.fromLTRB(15, 0, 15, 10),
-                                width: 170,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(0),
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(
-                                          'assets/images/album7.jpg')),
-                                ),
-                              ),
+                          ),
+                          Container(
+                            width: 170,
+                            padding: EdgeInsets.only(left: 18),
+                            child: Text(
+                              title[index],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: TextStyle(color: Colors.white),
                             ),
-                            Container(
-                              width: 170,
-                              padding: EdgeInsets.only(left: 18),
-                              child: Text(
-                                '50 Cent ',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ]),
-                    ],
+                          ),
+                        ]),
+
+                    // sharp container card
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: 20,
-                    top: 20,
-                  ),
-                  child: Row(children: [
-                    Text('Most liked songs',
+                Row(children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 20, bottom: 10),
+                    child: Text('Most liked songs',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
                             fontWeight: FontWeight.w600)),
-                  ]),
-                ),
+                  ),
+                ]),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 15),
                   height: 240.0,
-                  child: ListView(
+                  child: ListView.builder(
+                    itemCount: title.length,
                     scrollDirection: Axis.horizontal,
                     physics: ClampingScrollPhysics(),
-                    children: <Widget>[
-                      Column(children: [
-                        // circle container card for artists
-                        Container(
-                            margin: EdgeInsets.only(left: 15),
-                            height: 200.0,
-                            width: 160.0,
-                            // color: Colors.blue,
-                            child: CircleAvatar(
-                              radius: 50,
-                              backgroundImage:
-                                  AssetImage('assets/images/album3.jpg'),
-                            )),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          width: MediaQuery.of(context).size.width / 2,
-                          child: Text(
-                            'Arjit Singh meArjit Singh anylong nameSingh anylong name',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white),
+                    itemBuilder: (context, index) => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 170,
+                              padding: EdgeInsets.all(2),
+                              margin: EdgeInsets.fromLTRB(15, 0, 5, 10),
+                              width: 170,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(0),
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage(image[index])),
+                              ),
+                            ),
                           ),
-                        ),
-                      ]),
+                          Container(
+                            width: 170,
+                            padding: EdgeInsets.only(left: 18),
+                            child: Text(
+                              title[index],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ]),
+                  ),
+                ),
+                Row(children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 20, bottom: 10),
+                    child: Text('Most Played Artists',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600)),
+                  ),
+                ]),
+                Container(
+                  height: 240.0,
+                  child: ListView.builder(
+                    itemCount: title.length,
+                    scrollDirection: Axis.horizontal,
+                    physics: ClampingScrollPhysics(),
+                    itemBuilder: (context, index) => Column(children: [
+                      // circle container card for artists
                       Container(
                           margin: EdgeInsets.only(left: 15),
+                          height: 222,
                           width: 160.0,
                           // color: Colors.blue,
                           child: CircleAvatar(
-                            radius: 50,
-                            backgroundImage:
-                                AssetImage('assets/images/album3.jpg'),
+                            radius: 70,
+                            backgroundImage: AssetImage(image[index]),
                           )),
-                    ],
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        width: MediaQuery.of(context).size.width / 2,
+                        child: Text(
+                          title[index],
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ]),
                   ),
                 )
               ]),
