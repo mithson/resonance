@@ -183,13 +183,12 @@ class _HomeState extends State<Home> {
                             Container(
                               width: 170,
                               padding: EdgeInsets.only(left: 18),
-                              child: Flexible(
-                                  child: Text(
+                              child: Text(
                                 'Cigarettes After Sex Cigarettes After Cigarettes After',
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: TextStyle(color: Colors.white),
-                              )),
+                              ),
                             ),
                           ]),
                       Container(
@@ -299,4 +298,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
