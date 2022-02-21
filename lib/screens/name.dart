@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:resonance/widgets/bottom_nav_bar.dart';
 
-class Name extends StatelessWidget {
+class Name extends StatefulWidget {
   const Name({Key? key}) : super(key: key);
 
+  @override
+  State<Name> createState() => _NameState();
+}
+
+class _NameState extends State<Name> {
+  final userName = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,15 +28,78 @@ class Name extends StatelessWidget {
       backgroundColor: Colors.black,
       body: SafeArea(
           child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.only(left: 20, top: 20),
-            child: Text('What\'s your gender',
+            child: Text('What\'s your name?',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 25,
                     fontWeight: FontWeight.bold)),
           ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            child: TextField(
+              onChanged: (val) {
+                setState(() {});
+              },
+              cursorColor: Colors.white,
+              style: TextStyle(
+                color: Colors.white,
+              ),
+              cursorHeight: 30,
+              maxLines: 1,
+              maxLength: 30,
+              cursorWidth: 1,
+              controller: userName,
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(4)),
+                  borderSide: BorderSide(width: 1, color: Colors.white),
+                ),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.grey, width: 0.0),
+                ),
+                focusColor: Colors.white,
+                fillColor: Colors.white30,
+                filled: true,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 18, top: 0, right: 15),
+            child: Text('This will appear as your profile name',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400)),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Visibility(
+            visible: userName.text == '' ? false : true,
+            child: Align(
+              alignment: Alignment.center,
+              child: MaterialButton(
+                height: 50,
+                minWidth: 100,
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BottomNavBar()));
+                },
+                child: Text(
+                  "CREATE",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ),
+          )
         ],
       )),
     );
