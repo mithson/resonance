@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resonance/screens/home.dart';
 import 'package:resonance/screens/library.dart';
+import 'package:resonance/screens/playlist_screen.dart';
 import 'package:resonance/screens/search.dart';
 
 class BottomNavBar extends StatefulWidget {

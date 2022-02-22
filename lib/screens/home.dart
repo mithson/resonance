@@ -256,7 +256,7 @@ class _HomeState extends State<Home> {
                   ),
                 ]),
                 Container(
-                  height: 240.0,
+                  height: 250.0,
                   child: ListView.builder(
                     itemCount: title.length,
                     scrollDirection: Axis.horizontal,
@@ -264,16 +264,15 @@ class _HomeState extends State<Home> {
                     itemBuilder: (context, index) => Column(children: [
                       // circle container card for artists
                       Container(
-                          margin: EdgeInsets.only(left: 15),
                           height: 222,
-                          width: 160.0,
+                          width: 175,
                           // color: Colors.blue,
                           child: CircleAvatar(
                             radius: 70,
                             backgroundImage: AssetImage(image[index]),
                           )),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        // padding: const EdgeInsets.symmetric(horizontal: 0),
                         width: MediaQuery.of(context).size.width / 2,
                         child: Text(
                           title[index],
