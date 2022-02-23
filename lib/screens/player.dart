@@ -126,26 +126,34 @@ class _PlayerState extends State<Player> {
                         ),
                         Spacer(),
                         Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Column(
-                              children: [
-                                Text('Hare Krishna Song ',
+                            Container(
+                              padding: EdgeInsets.only(left: 15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('Hare Krishna Song',
+                                      // softWrap: true,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20)),
+                                  SizedBox(
+                                    height: 6.0,
+                                  ),
+                                  Text(
+                                    'HG Swarup Das Ft. Shreya Ghoshal',
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 30)),
-                                SizedBox(
-                                  height: 6.0,
-                                ),
-                                Text(
-                                  'HG Swarup Das Ft. Shreya Ghoshal',
-                                  style: TextStyle(
-                                      color: Colors.white.withOpacity(0.6),
-                                      fontSize: 18.0),
-                                ),
-                              ],
+                                        color: Colors.white.withOpacity(0.6),
+                                        fontSize: 15.0),
+                                  ),
+                                ],
+                              ),
                             ),
                             Spacer(),
                             Icon(
@@ -153,6 +161,9 @@ class _PlayerState extends State<Player> {
                               color: Colors.white,
                               size: 30,
                             ),
+                            SizedBox(
+                              width: 20,
+                            )
                           ],
                         )
                       ],
@@ -162,13 +173,15 @@ class _PlayerState extends State<Player> {
               ),
             ),
           ),
-          // Spacer(),
-          Slider.adaptive(
-            //change value after 11 step, and add min and max
-            value: position.inSeconds.toDouble(),
-            min: 0.0,
-            max: duration.inSeconds.toDouble(),
-            onChanged: (value) {},
+          Padding(
+            padding: EdgeInsets.only(left: 8),
+            child: Slider.adaptive(
+              //change value after 11 step, and add min and max
+              value: position.inSeconds.toDouble(),
+              min: 0.0,
+              max: duration.inSeconds.toDouble(),
+              onChanged: (value) {},
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -176,18 +189,18 @@ class _PlayerState extends State<Player> {
               Spacer(),
               Icon(
                 Icons.repeat,
-                color: iconHoverColor,
+                color: Colors.white.withOpacity(0.6),
               ),
               Spacer(),
               Icon(
-                Icons.fast_rewind,
-                color: Colors.white54,
+                Icons.skip_previous_rounded,
+                color: Colors.white,
                 size: 42.0,
               ),
               SizedBox(width: 32.0),
               Container(
                 decoration: BoxDecoration(
-                    color: iconHoverColor,
+                    border: Border.all(color: Colors.white, width: 3),
                     borderRadius: BorderRadius.circular(50.0)),
                 child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -200,21 +213,50 @@ class _PlayerState extends State<Player> {
               ),
               SizedBox(width: 32.0),
               Icon(
-                Icons.fast_forward,
-                color: Colors.white54,
+                Icons.skip_next_rounded,
+                color: Colors.white,
                 size: 42.0,
               ),
               Spacer(),
               Icon(
                 Icons.shuffle,
-                color: iconHoverColor,
+                color: Colors.white.withOpacity(0.6),
               ),
               Spacer(),
             ],
           ),
-          // Spacer(),
-          // SizedBox(height: 58.0),
-          Spacer(),
+          SizedBox(height: 10.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                width: 40,
+              ),
+              Icon(
+                Icons.volume_up_rounded,
+                color: Colors.white.withOpacity(0.6),
+                size: 30,
+              ),
+              Spacer(),
+              Icon(
+                Icons.share,
+                color: Colors.white.withOpacity(0.6),
+                size: 25,
+              ),
+              SizedBox(
+                width: 25,
+              ),
+              Icon(
+                Icons.list_rounded,
+                color: Colors.white.withOpacity(0.6),
+                size: 40,
+              ),
+              SizedBox(
+                width: 35,
+              )
+            ],
+          ),
+          SizedBox(height: 40.0),
         ],
       ),
     );
