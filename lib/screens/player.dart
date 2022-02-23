@@ -184,6 +184,27 @@ class _PlayerState extends State<Player> {
             ),
           ),
           Row(
+            children: [
+              SizedBox(
+                width: 20,
+              ),
+              Text(
+                '00:00',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.6),
+                ),
+              ),
+              Spacer(),
+              Text('4:35',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.6),
+                  )),
+              SizedBox(
+                width: 20,
+              )
+            ],
+          ),
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Spacer(),
