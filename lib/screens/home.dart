@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resonance/data.dart';
+import 'package:resonance/model/data.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

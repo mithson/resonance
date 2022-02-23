@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resonance/screens/artists.dart';
-import 'package:resonance/data.dart';
+import 'package:resonance/model/data.dart';
 
 class LangScreen extends StatefulWidget {
   const LangScreen({Key? key}) : super(key: key);

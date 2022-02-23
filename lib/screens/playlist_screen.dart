@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resonance/data.dart';
+import 'package:resonance/model/data.dart';
 
 class PlayListScreen extends StatelessWidget {
   const PlayListScreen({Key? key}) : super(key: key);

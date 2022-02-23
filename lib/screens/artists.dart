@@ -6,7 +6,7 @@
 // print(b);
 
 import 'package:flutter/material.dart';
-import 'package:resonance/data.dart';
+import 'package:resonance/model/data.dart';
 import 'package:resonance/widgets/bottom_nav_bar.dart';
 
 class Artists extends StatefulWidget {

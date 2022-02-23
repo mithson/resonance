@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resonance/screens/dob.dart';
-import 'package:resonance/data.dart';
+import 'package:resonance/model/data.dart';
 
 class Password extends StatefulWidget {
   const Password({Key? key}) : super(key: key);

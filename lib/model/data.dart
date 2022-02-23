@@ -1,3 +1,16 @@
+class Music {
+  String? title;
+  String? singer;
+  String? image;
+  String? url;
+
+  Music(
+      {required this.title,
+      required this.singer,
+      required this.image,
+      required this.url});
+}
+
 var userEmail, userPassword, userDOB, userLang, userGender, userName;
 var homeTopTile = [
   'Top 50',

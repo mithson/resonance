@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resonance/data.dart';
+import 'package:resonance/model/data.dart';
 import 'package:resonance/screens/password.dart';
 
 class Email extends StatefulWidget {

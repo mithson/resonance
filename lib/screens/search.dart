@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resonance/data.dart';
+import 'package:resonance/model/data.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);

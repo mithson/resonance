@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resonance/data.dart';
+import 'package:resonance/model/data.dart';
 import 'package:resonance/screens/gender.dart';
 
 class DateOfBirth extends StatefulWidget {

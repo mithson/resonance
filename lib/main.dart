@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:resonance/screens/artists.dart';
-import 'package:resonance/screens/lang.dart';
-import 'package:resonance/screens/playlist_screen.dart';
+
+import 'package:resonance/screens/player.dart';
 import 'package:resonance/widgets/bottom_nav_bar.dart';
 import 'package:resonance/screens/email.dart';
 
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSwatch().copyWith(secondary: Colors.black87),
       ),
       debugShowCheckedModeBanner: false,
-      home: const PlayListScreen(),
+      home: Player(),
     );
   }
 }
