@@ -3,6 +3,7 @@ import 'package:resonance/screens/home.dart';
 import 'package:resonance/screens/library.dart';
 import 'package:resonance/screens/playlist_screen.dart';
 import 'package:resonance/screens/search.dart';
+import 'package:resonance/widgets/bottomPlayer.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class BottomNavBarState extends State<BottomNavBar> {
     Home(),
     Search(),
     Library(),
+    PlayListScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -33,72 +35,23 @@ class BottomNavBarState extends State<BottomNavBar> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      persistentFooterButtons: [
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5), color: Colors.deepPurple),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IconButton(
-                iconSize: 35,
-                icon: Icon(Icons.play_arrow),
-                onPressed: () {},
-              ),
-              Text("Some data over hereSome data "),
-              IconButton(
-                icon: Icon(Icons.favorite),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.list_sharp),
-                onPressed: () {},
-              )
-            ],
-          ),
-        )
-      ],
-      bottomNavigationBar: customBottomNavBar(),
+      persistentFooterButtons: [bottomPlayer(context)],
+      bottomNavigationBar: customBottomNavBar(_selectedIndex, _onItemTapped),
     );
   }
-
-  Widget customBottomNavBar() {
-    return Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.black87.withOpacity(0.1),
-              Colors.black87,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: [0.0, 0.8],
-            // tileMode: TileMode.clamp,
-          ),
-        ),
-        child: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Search',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.my_library_music),
-              label: 'Library',
-            ),
-          ],
-          elevation: 0,
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white60,
-          backgroundColor: const Color(0x000000).withOpacity(0.7),
-          onTap: _onItemTapped,
-        ));
-  }
 }
+
+//  Navigator(
+//         onGenerateRoute: (settings) {
+//           Widget tab1 = Home(); // page - tab1
+//           Widget tab2 = Search();
+//           Widget tab3 = Library();
+
+//           if (settings.name == 'home') tab1 = Home();
+//           return MaterialPageRoute(builder: (_) => tab1);
+//           if (settings.name == 'search') tab2 = Search();
+//           return MaterialPageRoute(builder: (_) => tab2);
+//           if (settings.name == 'library') tab3 = Library();
+//           return MaterialPageRoute(builder: (_) => tab3);
+//         },
+//       ),

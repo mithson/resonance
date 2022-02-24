@@ -110,7 +110,7 @@ class _PlayerState extends State<Player> {
                             Column(
                               children: [
                                 Text(
-                                  'PLAYLIST',
+                                  'Now Playing',
                                   style: TextStyle(
                                       color: Colors.white.withOpacity(0.6)),
                                 ),

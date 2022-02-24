@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:resonance/model/data.dart';
+import 'package:resonance/widgets/bottomPlayer.dart';
 
-class PlayListScreen extends StatelessWidget {
-  const PlayListScreen({Key? key}) : super(key: key);
+class PlayListScreen extends StatefulWidget {
+  const PlayListScreen({
+    Key? key,
+  }) : super(key: key);
 
+  @override
+  State<PlayListScreen> createState() => _PlayListScreenState();
+}
+
+class _PlayListScreenState extends State<PlayListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        persistentFooterButtons: [bottomPlayer(context)],
         backgroundColor: Colors.black,
         body: NestedScrollView(
           headerSliverBuilder: (context, _) => [
@@ -17,7 +26,7 @@ class PlayListScreen extends StatelessWidget {
               // snap: true,
               expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
-                titlePadding: EdgeInsetsDirectional.only(start: 40, bottom: 16),
+                titlePadding: EdgeInsetsDirectional.only(start: 50, bottom: 16),
                 // centerTitle: true,
                 title: Text('freaking awesome'),
                 background: Image.asset(
@@ -51,7 +60,7 @@ class PlayListScreen extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (context, index) => ListTile(
-                  leading: Image.network('https://picsum.photos/250?image=9'),
+                  leading: Image.asset(i10[index]),
                   title: Text(browseAll[index],
                       style: TextStyle(
                         color: Colors.white,
@@ -64,7 +73,7 @@ class PlayListScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(
-                        Icons.favorite,
+                        Icons.favorite_outline_rounded,
                         color: Colors.white,
                         size: 25,
                       ),
@@ -232,8 +241,8 @@ class PlayListScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Container(
-                    child: Image.network(
-                      'https://picsum.photos/250?image=9',
+                    child: Image.asset(
+                      'assets/images/girl.jpg',
                       fit: BoxFit.fill,
                     ),
                     height: 300,
