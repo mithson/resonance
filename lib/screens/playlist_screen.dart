@@ -23,7 +23,6 @@ class _PlayListScreenState extends State<PlayListScreen> {
               backgroundColor: Colors.black,
               pinned: true,
               floating: true,
-              // snap: true,
               expandedHeight: 200,
               flexibleSpace: FlexibleSpaceBar(
                 titlePadding: EdgeInsetsDirectional.only(start: 50, bottom: 16),

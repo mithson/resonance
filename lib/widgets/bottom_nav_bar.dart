@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resonance/screens/home.dart';
+import 'dart:ui';
 import 'package:resonance/screens/library.dart';
 import 'package:resonance/screens/playlist_screen.dart';
 import 'package:resonance/screens/search.dart';
@@ -19,7 +20,6 @@ class BottomNavBarState extends State<BottomNavBar> {
     Home(),
     Search(),
     Library(),
-    PlayListScreen(),
   ];
 
   void _onItemTapped(int index) {

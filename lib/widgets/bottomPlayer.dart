@@ -6,38 +6,66 @@ Widget bottomPlayer(BuildContext context) {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 10),
     decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5), color: Colors.deepPurple),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        IconButton(
-          iconSize: 35,
-          icon: Icon(Icons.play_arrow),
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Player()));
+      borderRadius: BorderRadius.circular(5),
+      color: Colors.purple.shade700,
+    ),
+    child: Column(children: [
+      ListTile(
+        leading: Image.asset('assets/images/girl.jpg'),
+        title: GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PlayListScreen()));
           },
-        ),
-        InkWell(
+          child: GestureDetector(
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => PlayListScreen()));
             },
-            child: Text("Some data over hereSome data ")),
-        IconButton(
-          icon: Icon(Icons.favorite),
-          onPressed: () {},
+            child: Text('browseAll[index]',
+                style: TextStyle(
+                  color: Colors.white,
+                )),
+          ),
         ),
-        IconButton(
-          icon: Icon(Icons.list_sharp),
-          onPressed: () {
-            // Navigator.push(
-            //     context, MaterialPageRoute(builder: (context) => MyHomePage()));
-          },
-        )
-      ],
-    ),
+        subtitle: Text('browseAll[index]',
+            style: TextStyle(
+              color: Colors.white,
+            )),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.list,
+              color: Colors.white,
+              size: 33,
+            ),
+            SizedBox(width: 13),
+            Icon(
+              Icons.favorite_outline_rounded,
+              color: Colors.white,
+              size: 25,
+            ),
+            SizedBox(width: 10),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Player()));
+              },
+              child: Icon(
+                Icons.play_arrow,
+                color: Colors.white,
+                size: 35,
+              ),
+            ),
+          ],
+        ),
+      ),
+      LinearProgressIndicator(
+        value: 3,
+        color: Colors.white,
+      )
+    ]),
   );
 }
 
@@ -56,7 +84,6 @@ Widget customBottomNavBar(int _selectedIndex, _onItemTapped) {
         ),
       ),
       child: BottomNavigationBar(
-        
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
