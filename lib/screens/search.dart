@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resonance/model/data.dart';
+import 'package:resonance/screens/playlist_screen.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -81,7 +84,10 @@ class _SearchState extends State<Search> {
                 physics: BouncingScrollPhysics(),
                 itemCount: 4,
                 itemBuilder: (context, index) => ItemTile(
-                    context, topGenres[index], Colors.red, image[index]),
+                    context,
+                    topGenres[index],
+                    Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                    image[index]),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 1.8666,
@@ -106,8 +112,11 @@ class _SearchState extends State<Search> {
                 physics: BouncingScrollPhysics(),
                 itemCount: browseAll
                     .length, // 10 hona chahiye it is handled from data.dart file jitna wo hoga yaha bhi utna aana chahiye
-                itemBuilder: (context, index) =>
-                    ItemTile(context, browseAll[index], Colors.red, i10[index]),
+                itemBuilder: (context, index) => ItemTile(
+                    context,
+                    browseAll[index],
+                    Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                    i10[index]),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: 1.8666,
@@ -123,62 +132,66 @@ class _SearchState extends State<Search> {
 
   Widget ItemTile(
       BuildContext context, String text, Color color, String image) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(3),
-      child: Container(
-        height: 180,
-        decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(5),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.grey.shade900,
-                  offset: const Offset(1, 1),
-                  spreadRadius: 1,
-                  blurRadius: 50,
-                  blurStyle: BlurStyle.outer),
-            ]),
-        child: Stack(
-          children: [
-            const SizedBox(
-              width: 175,
-              height: 100,
-            ),
-            Positioned(
-              bottom: 5,
-              right: -15,
-              child: RotationTransition(
-                turns: const AlwaysStoppedAnimation(385 / 360),
-                child: Container(
-                  width: 70,
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(3),
-                    boxShadow: kElevationToShadow[2],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(3),
-                    child: Image.asset(
-                      image,
-                      fit: BoxFit.cover,
-                      width: 70,
-                      height: 70,
+    return GestureDetector(
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PlayListScreen())),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(3),
+        child: Container(
+          height: 180,
+          decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(5),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.shade900,
+                    offset: const Offset(1, 1),
+                    spreadRadius: 1,
+                    blurRadius: 50,
+                    blurStyle: BlurStyle.outer),
+              ]),
+          child: Stack(
+            children: [
+              const SizedBox(
+                width: 175,
+                height: 100,
+              ),
+              Positioned(
+                bottom: 5,
+                right: -15,
+                child: RotationTransition(
+                  turns: const AlwaysStoppedAnimation(385 / 360),
+                  child: Container(
+                    width: 70,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(3),
+                      boxShadow: kElevationToShadow[2],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(3),
+                      child: Image.asset(
+                        image,
+                        fit: BoxFit.cover,
+                        width: 70,
+                        height: 70,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
-              child: Text(text,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(fontSize: 18, fontWeight: FontWeight.bold)),
-            ),
-          ],
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+                child: Text(text,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(fontSize: 18, fontWeight: FontWeight.bold)),
+              ),
+            ],
+          ),
         ),
       ),
     );

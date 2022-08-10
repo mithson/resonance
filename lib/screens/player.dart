@@ -15,7 +15,7 @@ class Player extends StatefulWidget {
 class _PlayerState extends State<Player> {
   //8.Setting the player UI Data
   IconData btnIcon = Icons.play_arrow;
-  var bgColor = const Color(0xFF03174C);
+  var bgColor = Color.fromARGB(255, 63, 76, 3);
   var iconHoverColor = const Color(0xFF065BC3);
 
   Duration duration = new Duration();
@@ -74,7 +74,7 @@ class _PlayerState extends State<Player> {
                   Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/girl.jpg'),
+                        image: AssetImage('assets/images/album12.jpg'),
                         fit: BoxFit.cover,
                       ),
                     ),

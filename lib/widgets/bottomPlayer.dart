@@ -4,14 +4,14 @@ import 'package:resonance/screens/playlist_screen.dart';
 
 Widget bottomPlayer(BuildContext context) {
   return Container(
-    margin: EdgeInsets.symmetric(horizontal: 10),
+    // margin: EdgeInsets.symmetric(horizontal: 10),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(5),
       color: Colors.purple.shade700,
     ),
     child: Column(children: [
       ListTile(
-        leading: Image.asset('assets/images/girl.jpg'),
+        leading: Image.asset('assets/images/online1.jpg'),
         title: GestureDetector(
           onTap: () {
             Navigator.push(context,
@@ -22,13 +22,13 @@ Widget bottomPlayer(BuildContext context) {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => PlayListScreen()));
             },
-            child: Text('browseAll[index]',
+            child: Text('Radhe krishna Song',
                 style: TextStyle(
                   color: Colors.white,
                 )),
           ),
         ),
-        subtitle: Text('browseAll[index]',
+        subtitle: Text('Krishna Das Ft. Janhavi',
             style: TextStyle(
               color: Colors.white,
             )),
@@ -61,6 +61,7 @@ Widget bottomPlayer(BuildContext context) {
           ],
         ),
       ),
+      Spacer(),
       LinearProgressIndicator(
         value: 3,
         color: Colors.white,

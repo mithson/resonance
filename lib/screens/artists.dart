@@ -19,7 +19,7 @@ class Artists extends StatefulWidget {
 class _ArtistsState extends State<Artists> {
   List<String> selectedList = [];
 
-  late var all = a1 + a2;
+  late var all = a1 + artnames;
   // List b = a.sublist(4, 6);
 
   @override
@@ -62,17 +62,17 @@ class _ArtistsState extends State<Artists> {
           padding: EdgeInsets.zero,
           physics: BouncingScrollPhysics(),
           shrinkWrap: true,
-          itemCount: 6,
+          itemCount: artists.length,
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
-              if (selectedList.contains(a2[index])) {
+              if (selectedList.contains(artnames[index])) {
                 setState(() {
-                  selectedList.removeWhere((val) => val == a2[index]);
+                  selectedList.removeWhere((val) => val == artnames[index]);
                   print(selectedList);
                 });
               } else {
                 setState(() {
-                  selectedList.add(a2[index]);
+                  selectedList.add(artnames[index]);
                   print(selectedList);
                 });
               }
@@ -87,9 +87,10 @@ class _ArtistsState extends State<Artists> {
                         // padding: EdgeInsets.only(top: 5),
                         height: 150,
                         child: CircleAvatar(
-                          backgroundImage:
-                              const AssetImage('assets/images/album8.jpg'),
+                          // backgroundImage:
+                          //     NetworkImage('${artists[index]}'),
                           radius: 70,
+                          backgroundImage: AssetImage(artists[index]),
                         ),
                       ),
                     ),
@@ -97,17 +98,17 @@ class _ArtistsState extends State<Artists> {
                       height: 5,
                     ),
                     Text(
-                      a2[index],
+                      artnames[index],
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(fontSize: 12, color: Colors.white),
                     ),
 
-                    // circle container card for a2
+                    // circle container card for artnames
                   ]),
               Visibility(
-                  visible: selectedList.contains(a2[index]),
+                  visible: selectedList.contains(artnames[index]),
                   child: Positioned(
                       top: 6,
                       right: 10,

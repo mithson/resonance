@@ -89,7 +89,11 @@ class _EmailState extends State<Email> {
                   height: 30,
                 ),
                 Visibility(
-                  visible: email.text == '' ? false : true,
+                  visible: (!RegExp(
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(email.text))
+                      ? false
+                      : true,
                   child: Align(
                     alignment: Alignment.center,
                     child: MaterialButton(

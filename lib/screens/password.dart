@@ -102,7 +102,7 @@ class _PasswordState extends State<Password> {
                   height: 30,
                 ),
                 Visibility(
-                  visible: password.text == '' ? false : true,
+                  visible: password.text.length > 8 ? true : false,
                   child: Align(
                     alignment: Alignment.center,
                     child: MaterialButton(

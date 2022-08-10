@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resonance/model/data.dart';
+import 'package:resonance/screens/lang.dart';
 import 'package:resonance/widgets/bottom_nav_bar.dart';
 
 class Name extends StatefulWidget {
@@ -80,7 +81,7 @@ class _NameState extends State<Name> {
             height: 30,
           ),
           Visibility(
-            visible: name.text == '' ? false : true,
+            visible: (name.text.length > 2) ? true : false,
             child: Align(
               alignment: Alignment.center,
               child: MaterialButton(
@@ -93,7 +94,7 @@ class _NameState extends State<Name> {
                 onPressed: () {
                   userName = name.text;
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BottomNavBar()));
+                      MaterialPageRoute(builder: (context) => LangScreen()));
                   print(
                       '$userEmail, $userPassword, $userDOB, $userGender, $userName');
                 },

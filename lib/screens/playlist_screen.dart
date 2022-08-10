@@ -27,7 +27,7 @@ class _PlayListScreenState extends State<PlayListScreen> {
               flexibleSpace: FlexibleSpaceBar(
                 titlePadding: EdgeInsetsDirectional.only(start: 50, bottom: 16),
                 // centerTitle: true,
-                title: Text('freaking awesome'),
+                title: Text('Top Indie Playlist'),
                 background: Image.asset(
                   'assets/images/album2.jpg',
                   fit: BoxFit.cover,
@@ -60,7 +60,7 @@ class _PlayListScreenState extends State<PlayListScreen> {
                 itemCount: 10,
                 itemBuilder: (context, index) => ListTile(
                   leading: Image.asset(i10[index]),
-                  title: Text(browseAll[index],
+                  title: Text(playlist[index],
                       style: TextStyle(
                         color: Colors.white,
                       )),
@@ -86,10 +86,68 @@ class _PlayListScreenState extends State<PlayListScreen> {
                   ),
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(left: 20, top: 40, bottom: 10),
+                child: Row(children: [
+                  Text('Your Top Mixes',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600)),
+                ]),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 20.0),
+                height: 220.0,
+                child: ListView.builder(
+                  itemCount: artist.length,
+                  physics: ClampingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PlayListScreen()));
+                          },
+                          // curved container card
+                          child: Container(
+                            height: 170,
+                            padding: EdgeInsets.all(2),
+                            margin: EdgeInsets.fromLTRB(15, 0, 5, 10),
+                            width: 170,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(artist[index])),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 170,
+                          padding: EdgeInsets.only(left: 18),
+                          child: Text(
+                            artname[index],
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ]),
+
+                  // sharp container card
+                ),
+              ),
               Row(children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 20, top: 30, bottom: 10),
-                  child: Text('Most Played Artists',
+                  padding: EdgeInsets.only(left: 20, bottom: 10),
+                  child: Text('Most liked songs',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           color: Colors.white,
@@ -101,14 +159,19 @@ class _PlayListScreenState extends State<PlayListScreen> {
                 margin: const EdgeInsets.symmetric(vertical: 15),
                 height: 240.0,
                 child: ListView.builder(
-                  itemCount: title.length,
+                  itemCount: artists.length,
                   scrollDirection: Axis.horizontal,
                   physics: ClampingScrollPhysics(),
                   itemBuilder: (context, index) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PlayListScreen()));
+                          },
                           child: Container(
                             height: 170,
                             padding: EdgeInsets.all(2),
@@ -119,7 +182,7 @@ class _PlayListScreenState extends State<PlayListScreen> {
                               borderRadius: BorderRadius.circular(0),
                               image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: AssetImage(image[index])),
+                                  image: AssetImage(artists[index])),
                             ),
                           ),
                         ),
@@ -127,7 +190,7 @@ class _PlayListScreenState extends State<PlayListScreen> {
                           width: 170,
                           padding: EdgeInsets.only(left: 18),
                           child: Text(
-                            title[index],
+                            artnames[index],
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             style: TextStyle(color: Colors.white),
@@ -138,7 +201,7 @@ class _PlayListScreenState extends State<PlayListScreen> {
               ),
               Row(children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                  padding: EdgeInsets.only(left: 20, bottom: 10),
                   child: Text('Most Played Artists',
                       textAlign: TextAlign.left,
                       style: TextStyle(
@@ -150,81 +213,39 @@ class _PlayListScreenState extends State<PlayListScreen> {
               Container(
                 height: 250.0,
                 child: ListView.builder(
-                  itemCount: title.length,
+                  itemCount: artist.length,
                   scrollDirection: Axis.horizontal,
                   physics: ClampingScrollPhysics(),
-                  itemBuilder: (context, index) => Column(children: [
-                    // circle container card for artists
-                    Container(
-                        height: 222,
-                        width: 175,
-                        // color: Colors.blue,
-                        child: CircleAvatar(
-                          radius: 70,
-                          backgroundImage: AssetImage(image[index]),
-                        )),
-                    Container(
-                      // padding: const EdgeInsets.symmetric(horizontal: 0),
-                      width: MediaQuery.of(context).size.width / 2,
-                      child: Text(
-                        title[index],
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white),
+                  itemBuilder: (context, index) => GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PlayListScreen()));
+                    },
+                    child: Column(children: [
+                      // circle container card for artists
+                      Container(
+                          height: 222,
+                          width: 175,
+                          // color: Colors.blue,
+                          child: CircleAvatar(
+                            radius: 70,
+                            backgroundImage: AssetImage(artist[index]),
+                          )),
+                      Container(
+                        // padding: const EdgeInsets.symmetric(horizontal: 0),
+                        width: MediaQuery.of(context).size.width / 2,
+                        child: Text(
+                          artname[index],
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                    ),
-                  ]),
-                ),
-              ),
-              Row(children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 20, bottom: 20, top: 30),
-                  child: Text('Most Played Artists',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600)),
-                ),
-              ]),
-              Container(
-                margin: const EdgeInsets.only(top: 15),
-                height: 240.0,
-                child: ListView.builder(
-                  itemCount: title.length,
-                  scrollDirection: Axis.horizontal,
-                  physics: ClampingScrollPhysics(),
-                  itemBuilder: (context, index) => Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            height: 170,
-                            padding: EdgeInsets.all(2),
-                            margin: EdgeInsets.fromLTRB(15, 0, 5, 10),
-                            width: 170,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(0),
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(image[index])),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 170,
-                          padding: EdgeInsets.only(left: 18),
-                          child: Text(
-                            title[index],
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ]),
+                    ]),
+                  ),
                 ),
               ),
               Padding(
@@ -251,8 +272,17 @@ class _PlayListScreenState extends State<PlayListScreen> {
                   ),
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                    'The child Krishna was adored for his mischievous pranks; he also performed many miracles and slew demons. As a youth, the cowherd Krishna became renowned as a lover, the sound of his flute prompting the gopis (wives and daughters of the cowherds) to leave their homes to dance ecstatically with him in the moonlight. His favourite among them was the beautiful Radha.',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300)),
+              ),
               SizedBox(
-                height: 20,
+                height: 16,
               ),
             ]),
           ),

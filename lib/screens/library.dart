@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:resonance/model/data.dart';
+import 'package:resonance/screens/playlist_screen.dart';
+import 'package:resonance/screens/search.dart';
 
 class Library extends StatefulWidget {
   const Library({Key? key}) : super(key: key);
@@ -25,7 +28,10 @@ class _LibraryState extends State<Library> {
               actions: [
                 Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
                   IconButton(
-                      onPressed: null,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Search()));
+                      },
                       icon: Icon(FontAwesomeIcons.search,
                           size: 20, color: Colors.white)),
                   IconButton(
@@ -45,7 +51,7 @@ class _LibraryState extends State<Library> {
                 padding: EdgeInsets.only(left: 20),
                 child: CircleAvatar(
                   radius: 70,
-                  backgroundImage: AssetImage('assets/images/album3.jpg'),
+                  backgroundImage: AssetImage('assets/images/album2.jpg'),
                 ),
               ),
               title: Text('Your Library'),
@@ -64,7 +70,7 @@ class _LibraryState extends State<Library> {
           ];
         },
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: ClampingScrollPhysics(),
           child: Column(
             children: [
               SizedBox(
@@ -101,38 +107,12 @@ class _LibraryState extends State<Library> {
               SizedBox(
                 height: 5,
               ),
-              tile("Liked Songs", "assets/images/album1.jpg",
-                  "Playlist 52 Songs"),
-              tile("On Repeat", "assets/images/album2.jpg", "Playlist for u"),
-              tile("Malayalam", "assets/images/album3.jpg", "Malayalam List"),
-              tile("On Repeat", "assets/images/album6.jpg", "Playlist for u"),
-              tile("Malayalam", "assets/images/album7.jpg", "Malayalam List"),
-              tile("Weekly Discover", "assets/images/album8.jpg",
-                  "Weekly discover"),
-              tile("Liked Songs", "assets/images/album9.jpg",
-                  "Playlist 52 Songs"),
-              tile("Liked Songs", "assets/images/album1.jpg",
-                  "Playlist 52 Songs"),
-              tile("On Repeat", "assets/images/album2.jpg", "Playlist for u"),
-              tile("Malayalam", "assets/images/album3.jpg", "Malayalam List"),
-              tile("Weekly Discover", "assets/images/album4.jpg",
-                  "Weekly discover"),
-              tile("Weekly Discover", "assets/images/album4.jpg",
-                  "Weekly discover"),
-              tile("Liked Songs", "assets/images/album5.jpg",
-                  "Playlist 52 Songs"),
-              tile("On Repeat", "assets/images/album6.jpg", "Playlist for u"),
-              tile("Malayalam", "assets/images/album7.jpg", "Malayalam List"),
-              tile("Weekly Discover", "assets/images/album8.jpg",
-                  "Weekly discover"),
-              tile("Liked Songs", "assets/images/album9.jpg",
-                  "Playlist 52 Songs"),
-              tile("Liked Songs", "assets/images/album1.jpg",
-                  "Playlist 52 Songs"),
-              tile("On Repeat", "assets/images/album2.jpg", "Playlist for u"),
-              tile("Malayalam", "assets/images/album3.jpg", "Malayalam List"),
-              tile("Weekly Discover", "assets/images/album4.jpg",
-                  "Weekly discover"),
+              for (var i = 0; i < artnames.length; i++)
+                tile(
+                  artnames[i],
+                  artists[i],
+                  artnames[i],
+                ),
               SizedBox(
                 height: 115,
               )
@@ -201,6 +181,8 @@ class PersistentHeader extends SliverPersistentHeaderDelegate {
               shape: StadiumBorder(side: BorderSide(color: Colors.white)),
               onSelected: (bool value) {
                 print(item);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PlayListScreen()));
               },
             ),
           ),
