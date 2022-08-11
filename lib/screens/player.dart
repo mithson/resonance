@@ -15,8 +15,8 @@ class Player extends StatefulWidget {
 class _PlayerState extends State<Player> {
   //8.Setting the player UI Data
   IconData btnIcon = Icons.play_arrow;
-  var bgColor = Color.fromARGB(255, 63, 76, 3);
-  var iconHoverColor = const Color(0xFF065BC3);
+  var bgColor = Colors.transparent;
+  var iconHoverColor = Colors.transparent;
 
   Duration duration = new Duration();
   Duration position = new Duration();
@@ -62,7 +62,7 @@ class _PlayerState extends State<Player> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF03174C),
+      backgroundColor: Colors.transparent,
       body: Column(
         children: [
           Expanded(
@@ -176,6 +176,8 @@ class _PlayerState extends State<Player> {
           Padding(
             padding: EdgeInsets.only(left: 8),
             child: Slider.adaptive(
+              inactiveColor: Colors.grey,
+              activeColor: Colors.white,
               //change value after 11 step, and add min and max
               value: position.inSeconds.toDouble(),
               min: 0.0,
